@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav } from "react-bootstrap";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import { NavDropdown } from 'react-bootstrap';

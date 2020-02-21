@@ -26,7 +26,7 @@ class App extends Component {
           tickers: res.data.symbolsList
         });
       });
-  }
+  } 
 
   render() {
     return (

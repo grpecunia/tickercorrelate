@@ -48,3 +48,47 @@
   /* background: #333; */
   padding: 30px;
 }
+
+li.tickerOptions {
+      list-style: none;
+      text-align: left;
+      padding-top: 5px;
+}
+
+input:focus {
+  outline: none;
+  
+}
+
+input{
+      width: 100%;
+      padding: 10px;
+      border: 0;
+      border-bottom: 1px solid #ccc;
+}
+
+.md-form::after {
+    content: url('./loading.gif');
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    /* max-width: 10px; */
+    font-size: 24px;
+    transform: rotate(0deg);
+    transition: all .5s;
+}
+
+.md-form:focus-within::after {
+  transform: rotate(90deg);
+}
+
+.profile {
+  display: inline-grid;
+  justify-content: stretch;
+  align-content: center;
+}
+
+.row .row-bottom {
+  display: fixed;
+  bottom: 0;
+}

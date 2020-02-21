@@ -11,22 +11,32 @@ class Home extends Component {
     };
 
   showTickerOptions = () => {
-    console.log(this.props.tickers);
+    // console.log(this.props.tickers);
     let tickerOptions = { ...this.props.tickers };
     let tickerList = [];
     for (let i in tickerOptions) {
-      tickerList.push(tickerOptions[i].name);
+      tickerList.push({value: tickerOptions[i].symbol, label: tickerOptions[i].name});
     }
-    return tickerList;
+    console.log(tickerList);
+    return tickerList.slice(0,1000);
   };
 
   handleChangeTicker = selectedOptionTicker => {
+    console.log(selectedOptionTicker.target);
+
     this.setState({ selectedOptionTicker });
+    // this.setState({ test: selectedOptionTicker.target.value });
     console.log(`Ticker selected:`, selectedOptionTicker);
   };
 
+  test = e => {
+    console.log(e.target);
+  }
+ 
   render() {
+    //   console.log(this.props)
     const { selectedOptionTicker } = this.state;
+    
     return (
       <div className="col home ease-in">
         <div className="col-12 home">
@@ -53,7 +63,9 @@ class Home extends Component {
             <Form.Group as={Col} controlId="tcformpicker">
               <Select
                 value={selectedOptionTicker}
+                // onInput={e => this.handleChangeTicker(e)}
                 onChange={e => this.handleChangeTicker(e)}
+                onInput={e => this.test(e)}
                 options={this.showTickerOptions()}
               />
             </Form.Group>

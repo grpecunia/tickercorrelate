@@ -7,14 +7,17 @@ import axios from "axios";
 import "./App.css";
 import { NavDropdown } from 'react-bootstrap';
 import Home from './Home'
+import Details from './Details'
 
 
 class App extends Component {
   state = {
-    tickers: {}
+    tickers: [],
+    tickerData : [],
   };
 
   componentDidMount() {
+
     axios
       .get(`https://financialmodelingprep.com/api/v3/company/stock/list`)
       .then(res => {
@@ -32,7 +35,7 @@ class App extends Component {
           collapseOnSelect
           expand="lg"
           variant="dark"
-          style={{ backgroundColor: "#82A0BC", zIndex: '100' }}
+          style={{ backgroundColor: "#82A0BC", zIndex: "100" }}
         >
           <Navbar.Brand href="/">
             <img
@@ -69,6 +72,11 @@ class App extends Component {
               exact
               path="/"
               render={props => <Home tickers={this.state.tickers} {...props} />}
+            />
+            <Route
+              exact
+              path="/Details/:ticker"
+              render={props => <Details tickers={this.state.tickers} tickerData={this.state.tickerData} {...props} />}
             />
           </Switch>
         </div>

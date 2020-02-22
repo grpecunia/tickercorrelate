@@ -26,7 +26,7 @@ class App extends Component {
           tickers: res.data.symbolsList
         });
       });
-  } 
+  }  
 
   render() {
     return (
@@ -35,7 +35,7 @@ class App extends Component {
           collapseOnSelect
           expand="lg"
           variant="dark"
-          style={{ backgroundColor: "#6f89a1", zIndex: "100" }}
+          style={{ backgroundColor: "#56728c", zIndex: "100" }}
         >
           <Navbar.Brand href="/">
             <img

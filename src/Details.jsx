@@ -93,16 +93,19 @@ class Details extends Component {
             </div>
             <div className="col-md-9">
               <div className="card-body">
-                <h5 className="card-title">
-                  {this.state.tickerData.companyName}
-                </h5>
+                <h2 className="card-title">
+                  <b>{this.state.tickerData.companyName}</b>
+                </h2>
                 <p className="card-text">{this.state.tickerData.description}</p>
                 <p className="card-text">
                   <small className="text-muted">
-                    Ticker Symbol - {this.props.match.params.ticker} @{" "}
-                    {this.state.tickerData.exchange}
+                    <b>
+                      Ticker Symbol {" - "}
+                      {this.props.match.params.ticker} @{" "}
+                      {this.state.tickerData.exchange}
+                    </b>
                     <br />
-                    Web:{" "}
+                    <b>Web:</b>{" "}
                     <a href={this.state.tickerData.website} target="_blank">
                       {this.state.tickerData.website}
                     </a>
@@ -131,7 +134,7 @@ class Details extends Component {
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
               CEO
-              <span className="badge badge-secondary badge-pill">
+              <span className="badge badge-info badge-pill">
                 {this.state.tickerData.ceo}
               </span>
             </li>
@@ -207,15 +210,17 @@ class Details extends Component {
         /> */}
 
         <h5 className="home">
-          Select one of the options from the commodities below to start the
-          Correlation analysis!
+          <b>
+            Select one of the options from the commodities below to start the
+            Correlation analysis!
+          </b>
         </h5>
         <div className="row home">
           <div className="col-4">
             <div
               className="row-4"
               style={{
-                backgroundColor: "gold"
+                backgroundColor: "#6f89a1"
               }}
             >
               Gold
@@ -224,7 +229,7 @@ class Details extends Component {
             <div
               className="row-4"
               style={{
-                backgroundColor: "silver"
+                backgroundColor: "#6f89a1"
               }}
             >
               Palladium
@@ -234,7 +239,7 @@ class Details extends Component {
             <div
               className="row-4"
               style={{
-                backgroundColor: "sandybrown"
+                backgroundColor: "#6f89a1"
               }}
             >
               Crude Oil
@@ -243,7 +248,7 @@ class Details extends Component {
             <div
               className="row-4"
               style={{
-                backgroundColor: "yellow"
+                backgroundColor: "#6f89a1"
               }}
             >
               Corn
@@ -253,7 +258,7 @@ class Details extends Component {
             <div
               className="row-4"
               style={{
-                backgroundColor: "lightgoldenrodyellow"
+                backgroundColor: "#6f89a1"
               }}
             >
               Dairy
@@ -262,10 +267,10 @@ class Details extends Component {
             <div
               className="row-4"
               style={{
-                backgroundColor: "red"
+                backgroundColor: "#6f89a1"
               }}
             >
-              Poulty
+              Poultry
             </div>
           </div>
         </div>

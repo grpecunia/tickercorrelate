@@ -1,3 +1,7 @@
+.App {
+  font-family: "OpenSans"
+}
+
 .sidebar {
   background-color: #536271;
   display: flex;
@@ -141,5 +145,10 @@ div.col-4 div.row-4 {
   border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
   background: round;
-  /* color: white */
+  color: white;
+  font-size: 24px
+}
+
+.badge-pill {
+  padding: 6px
 }

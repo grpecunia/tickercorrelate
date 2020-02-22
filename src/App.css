@@ -51,8 +51,12 @@
 
 li.tickerOptions {
       list-style: none;
-      text-align: left;
+      text-align: center;
       padding-top: 5px;
+}
+
+li.tickerOptions :first-child{
+  background-color: lightcyan;
 }
 
 input:focus {
@@ -72,7 +76,6 @@ input{
     position: absolute;
     right: 30px;
     top: 10px;
-    /* max-width: 10px; */
     font-size: 24px;
     transform: rotate(0deg);
     transition: all .5s;
@@ -82,13 +85,61 @@ input{
   transform: rotate(90deg);
 }
 
-.profile {
+img.ab {
   display: inline-grid;
   justify-content: stretch;
   align-content: center;
+  max-inline-size: fit-content;
+  margin: auto;
+}
+
+.col-md-2 {
+  margin: auto;
+  margin-left: 5vw;
 }
 
 .row .row-bottom {
   display: fixed;
   bottom: 0;
+}
+
+rect {
+  padding: auto;
+}
+
+.loading {
+animation:blinkingText 1.2s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    color: #000;
+  }
+
+  49% {
+    color: #000;
+  }
+
+  60% {
+    color: transparent;
+  }
+
+  99% {
+    color: transparent;
+  }
+
+  100% {
+    color: #000;
+  }
+}
+
+div.col-4 div.row-4 {
+  border-style: solid;
+  border-width: 1px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  background: round;
+  /* color: white */
 }

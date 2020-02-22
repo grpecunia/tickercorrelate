@@ -47,7 +47,7 @@ class Home extends Component {
   };
 
   showOptions = e => {
-    return this.state.filteredItems.slice(0, 5).map((eachItem, i) => {
+    return this.state.filteredItems.slice(0, 3).map((eachItem, i) => {
       return (
         <li
           key={eachItem.symbol}
@@ -70,60 +70,60 @@ class Home extends Component {
     this.filterStuff({ target: { value: item.name } });
   };
 
-  showDetails = () => {
-    console.log("oh yeah... we went there....");
-    console.log(this.state.searchTicker);
-     this.setState({ selectedOptionTicker: this.state.search.symbol },
-      ()=>{
-          this.props.history.push(`/Details/${this.state.searchTicker}`);
+  showDetails = (e, i) => {
+    if (this.state.searchTicker) {
+      console.log("oh yeah... we went there....");
+      console.log(this.state.searchTicker);
+      this.setState({ selectedOptionTicker: this.state.search.symbol }, () => {
+        this.props.history.push(`/Details/${this.state.searchTicker}`);
       });
-
+    } else {
+      e.preventDefault();
+      console.log("Nothing has been selected yet....");
+    }
   };
 
   render() {
     return (
-      <div className="col home ease-in">
-        <div className="col-12 home">
-          <h1>Welcome to TickerCorrelate</h1>
-          <div className="row">
-            <div className="col-8 offset-2 home-text">
-              <p>
-                <b>
-                  Find correlations between more than 13k+ publicly traded
-                  stocks and commodities!
-                </b>
-                <br />
-                <br />
-                Start by selecting a company to view it's profile and then
-                proceed to correlate it's stock's close price with different
-                commodities throughout a selected timeframe.
-              </p>
-            </div>
-          </div>
+      <div className="col-10 offset-1 home ease-in">
+        <div class="jumbotron">
+          <h1 class="display-4">Welcome to TickerCorrelate</h1>
+          <p class="lead">
+            Find correlations between more than 13,000+ publicly traded stocks,
+            ETF's, Mutual Funds, Bonds and World traded commodities!
+          </p>
+          <hr class="my-4" />
+          <p style={{ paddingLeft: "20%", paddingRight: "20%" }}>
+            Search for the name of the company, ETF, Mutual Fund or Bond in the
+            provided input below and then click on the button to proceed the
+            respective company profiles in order to correlate it's market close
+            price with different commodities. To learn more about this project
+            or the application, please check out the About section on the top
+            navigation bar.
+          </p>
         </div>
-        <br />
-        <div className="row">
-          <div className="col-6 offset-3">
-            <div className="md-form">
-              <input
-                value={this.state.search}
-                type="text"
-                placeholder="Type the Company or ETF name..."
-                className="form-scontrol"
-                onChange={this.filterStuff}
-              />
-              {this.showOptions()}
-            </div>
+        <div className="col-6 offset-3">
+          <form className="mb-form">
+            <input
+              value={this.state.search}
+              type="text"
+              placeholder="Type the Company or ETF name..."
+              className="form-scontrol home"
+              onChange={this.filterStuff}
+            />
+            {this.showOptions()}
+
             <br />
-          </div>
+            <button
+              type="submit"
+              onClick={e => this.showDetails(e, this.state.search)}
+              className="btn btn-success center"
+              style={{ marginTop: "10px" }}
+            >
+              Let's Get Started!
+            </button>
+          </form>
         </div>
-        <button
-          type="submit"
-          onClick={() => this.showDetails(this.state.search)}
-          className="btn btn-success center"
-        >
-          Let's Get Started!
-        </button>
       </div>
     );
   }

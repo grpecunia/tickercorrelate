@@ -35,7 +35,7 @@ class App extends Component {
           collapseOnSelect
           expand="lg"
           variant="dark"
-          style={{ backgroundColor: "#82A0BC", zIndex: "100" }}
+          style={{ backgroundColor: "#6f89a1", zIndex: "100" }}
         >
           <Navbar.Brand href="/">
             <img
@@ -76,7 +76,13 @@ class App extends Component {
             <Route
               exact
               path="/Details/:ticker"
-              render={props => <Details tickers={this.state.tickers} tickerData={this.state.tickerData} {...props} />}
+              render={props => (
+                <Details
+                  tickers={this.state.tickers}
+                  tickerData={this.state.tickerData}
+                  {...props}
+                />
+              )}
             />
           </Switch>
         </div>

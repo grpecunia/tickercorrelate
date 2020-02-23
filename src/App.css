@@ -152,7 +152,7 @@ rect {
   }
 }
 
-div.col-2 div.row-8 {
+div.row-8 {
   border-style: solid;
   border-width: 1px;
   margin: auto;
@@ -164,6 +164,8 @@ div.col-2 div.row-8 {
   font-size: 14px;
   word-wrap: normal;
   font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .badge-pill {
@@ -175,4 +177,14 @@ div.col-2 div.row-8 {
   border-color: #28a745;
   border-radius: 16px;
   padding: 15px;
+}
+
+.col-sm-12 {
+  padding-bottom: 5px;
+}
+
+@media only screen and (min-width: 600px) {
+  .row-8 {
+    display: inline;
+  }
 }

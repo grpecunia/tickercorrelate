@@ -148,7 +148,7 @@ class Details extends Component {
           className="row"
           style={{ paddingTop: "10px", paddingLeft: "15px" }}
         >
-          <ul className="list-group col-4">
+          <ul className="list-group col-lg-4 col-md-4 col-sm-12">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Industry
               <span className="badge badge-primary badge-pill">
@@ -168,7 +168,7 @@ class Details extends Component {
               </span>
             </li>
           </ul>
-          <ul className="list-group col-4">
+          <ul className="list-group col-lg-4 col-md-4 col-sm-12">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Price
               <span className="badge badge-success badge-pill">
@@ -184,33 +184,33 @@ class Details extends Component {
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Beta
               <span className="badge badge-danger badge-pill">
-                {Number(this.state.tickerData.beta).toFixed(2)}
+                {Number(this.state.tickerData.beta).toFixed(2) !== undefined
+                  ? Number(this.state.tickerData.beta).toFixed(2)
+                  : `N/A`}
               </span>
             </li>
           </ul>
-          <ul className="list-group col-4">
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              P/E Ratio
-              <span className="badge badge-info badge-pill">
-                {Number(this.state.tickerMetrics["PE ratio"]).toFixed(2)}
-              </span>
-            </li>
+          <ul className="list-group col-lg-4 col-md-4 col-sm-12">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Market Cap
-              <span className="badge badge-success badge-pill">
-                $
-                {this.numberWithCommas(
-                  Number(this.state.tickerMetrics["Market Cap"])
-                )}
+              <span className="badge badge-info badge-pill">
+                {`$ ` +
+                  this.numberWithCommas(Number(this.state.tickerData.mktCap))}
               </span>
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
-              Rev / Share
-              <span className="badge badge-primary badge-pill">
-                $
-                {Number(
-                  this.state.tickerMetrics["Revenue per Share"]
-                ).toFixed(2)}
+              52wk Range
+              <span className="badge badge-success badge-pill">
+                {`$ ` + this.state.tickerData.range}
+              </span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Last Change
+              <span className="badge badge-warning badge-pill">
+                {`$ ` + this.state.tickerData.changes + "          "}
+                <span className="badge badge-light">
+                  {this.state.tickerData.changesPercentage}
+                </span>
               </span>
             </li>
           </ul>
@@ -220,7 +220,10 @@ class Details extends Component {
           <b>Select an Options for Commodity Correlations</b>
         </h5>
         <div className="container row home">
-          <div onClick={e => this.pushToCommodity(e)} className="col-2">
+          <div
+            onClick={e => this.pushToCommodity(e)}
+            className="col-lg-2 col-md-4 col-sm-12"
+          >
             <div
               className="row-8"
               style={{
@@ -230,7 +233,10 @@ class Details extends Component {
               Gold
             </div>
           </div>
-          <div onClick={e => this.pushToCommodity(e)} className="col-2">
+          <div
+            onClick={e => this.pushToCommodity(e)}
+            className="col-lg-2 col-md-4 col-sm-12"
+          >
             <div
               className="row-8"
               style={{
@@ -240,7 +246,10 @@ class Details extends Component {
               Copper
             </div>
           </div>
-          <div onClick={e => this.pushToCommodity(e)} className="col-2">
+          <div
+            onClick={e => this.pushToCommodity(e)}
+            className="col-lg-2 col-md-4 col-sm-12"
+          >
             <div
               className="row-8"
               style={{
@@ -250,7 +259,10 @@ class Details extends Component {
               Crude Oil
             </div>
           </div>
-          <div onClick={e => this.pushToCommodity(e)} className="col-2">
+          <div
+            onClick={e => this.pushToCommodity(e)}
+            className="col-lg-2 col-md-4 col-sm-12"
+          >
             <div
               className="row-8"
               style={{
@@ -260,7 +272,10 @@ class Details extends Component {
               Cattle
             </div>
           </div>
-          <div onClick={e => this.pushToCommodity(e)} className="col-2">
+          <div
+            onClick={e => this.pushToCommodity(e)}
+            className="col-lg-2 col-md-4 col-sm-12"
+          >
             <div
               className="row-8"
               style={{
@@ -270,7 +285,10 @@ class Details extends Component {
               Coffee
             </div>
           </div>
-          <div onClick={e => this.pushToCommodity(e)} className="col-2">
+          <div
+            onClick={e => this.pushToCommodity(e)}
+            className="col-lg-2 col-md-4 col-sm-12"
+          >
             <div
               className="row-8"
               style={{

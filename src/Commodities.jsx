@@ -29,13 +29,13 @@ class Commodities extends Component {
           <div className="col-3 offset-1">
             <div className="row-3 home">
               <label>Correlation Start Date</label>
-              <input type="date"></input>
+              <input type="date" required></input>
             </div>
             <div className="row-3 home">
               <label>Correlation End Date</label>
-              <input type="date"></input>
+              <input type="date" required></input>
             </div>
-            <br/>
+            <br />
             <button type="submit" className="btn-outline-success">
               TickerCorrelate
             </button>
@@ -48,7 +48,7 @@ class Commodities extends Component {
               loader={<div className="loading">Loading Chart...</div>}
               data={[
                 [
-                  { type: "date", label: "price" },
+                  { type: "date", label: " " },
                   this.props.match.params.ticker,
                   this.props.match.params.com
                 ],
@@ -64,7 +64,36 @@ class Commodities extends Component {
                 [new Date("2020-02-04"), 400, 1558.35],
                 [new Date("2020-02-03"), 567, 1574.75],
                 [new Date("2020-01-31"), 600, 1584.2],
-                [new Date("2020-01-30"), 699, 1578.25]
+                [new Date("2020-01-30"), 699, 1578.25],
+                [new Date("2020-01-29"), 134, 1581.4],
+                [new Date("2020-01-28"), 167, 1575.05],
+                [new Date("2020-01-27"), 178, 1563.7],
+                [new Date("2020-01-26"), 278, 1570.5],
+                [new Date("2020-01-25"), 145, 1573.2],
+                [new Date("2020-01-24"), 356, 1572.65],
+                [new Date("2020-01-23"), 789, 1563.3],
+                [new Date("2020-01-22"), 345, 1553.3],
+                [new Date("2020-01-21"), 400, 1558.35],
+                [new Date("2020-01-20"), 567, 1574.75],
+                [new Date("2020-01-19"), 600, 1584.2],
+                [new Date("2020-01-18"), 699, 1578.25],
+                [new Date("2020-01-17"), 600, 1584.2],
+                [new Date("2020-01-16"), 278, 1570.5],
+                [new Date("2020-01-15"), 145, 1573.2],
+                [new Date("2020-01-14"), 356, 1572.65],
+                [new Date("2020-01-13"), 789, 1563.3],
+                [new Date("2020-01-12"), 345, 1553.3],
+                [new Date("2020-01-11"), 400, 1558.35],
+                [new Date("2020-01-10"), 567, 1574.75],
+                [new Date("2020-01-09"), 600, 1584.2],
+                [new Date("2020-01-08"), 699, 1578.25],
+                [new Date("2020-01-07"), 600, 1584.2],
+                [new Date("2020-01-06"), 278, 1570.5],
+                [new Date("2020-01-05"), 145, 1573.2],
+                [new Date("2020-01-04"), 356, 1572.65],
+                [new Date("2020-01-03"), 789, 1563.3],
+                [new Date("2020-01-02"), 345, 1553.3],
+                [new Date("2020-01-01"), 400, 1558.35]
               ]}
               options={{
                 chart: {

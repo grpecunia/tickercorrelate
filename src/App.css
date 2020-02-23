@@ -94,6 +94,12 @@ input[type='select']:focus-within::after {
   transform: rotate(90deg);
 }
 
+input[type='date']::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+input[type='date']::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+input[type='date']::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+  color: transparent;
+}
+
 img.ab {
   display: inline-grid;
   justify-content: stretch;
@@ -117,7 +123,7 @@ rect {
 }
 
 .loading {
-/* animation:blinkingText 1.2s infinite; */
+  animation:blinkingText 1.2s infinite;
 }
 
 .loading:hover {

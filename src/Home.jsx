@@ -92,23 +92,26 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="col-10 offset-1 home ease-in">
+      <div className="col-lg-10 col-md-10 col-sm-10 offset-1 home ease-in">
         <div className="jumbotron">
           <h1 className="display-4">
             <span role="img" aria-label="Graph">
               📊
             </span>{" "}
             TickerCorrelate{" "}
-            <span className="rocket" role="img" aria-label="World">
+            <span className="rocket icon" role="img" aria-label="World">
               🚀
             </span>
           </h1>
-          <p className="lead" style={{ paddingLeft: "10%", paddingRight: "10%" }}>
+          <p
+            className="lead"
+            style={{ paddingLeft: "10%", paddingRight: "10%" }}
+          >
             Find correlations between more than 13,000+ publicly traded stocks,
             ETF's, Mutual Funds, Bonds and World traded commodities!
           </p>
           <hr className="my-4" />
-          <p style={{ paddingLeft: "20%", paddingRight: "20%" }}>
+          <p style={{ paddingLeft: "10%", paddingRight: "10%" }}>
             Search for the name of the company, ETF, Mutual Fund or Bond in the
             provided input below and then click on the button to proceed the
             respective company profiles in order to correlate its market close
@@ -117,7 +120,7 @@ class Home extends Component {
             navigation.
           </p>
         </div>
-        <div className="col-6 offset-3">
+        <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-1">
           <form className="mb-form">
             <input
               value={this.state.search}

@@ -101,7 +101,7 @@ class Commodities extends Component {
         <br />
         <br />
         <div className="container row">
-          <div className="col-3 offset-1">
+          <div className="col-lg-3 offset-1 col-md-12 col-sm-12" style={{paddingBottom:"40px"}}>
             <div className="row-3 home">
               <label>Correlation Start Date</label>
               <input type="date" required></input>
@@ -119,7 +119,7 @@ class Commodities extends Component {
               TickerCorrelate
             </button>
           </div>
-          <div className="col-7 offset-1">
+          <div className="col-lg-7 offset-1 col-md-12 col-sm-12">
             <Chart
               width={"500"}
               height={"300"}

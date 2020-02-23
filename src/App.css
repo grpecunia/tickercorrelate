@@ -76,21 +76,21 @@ input{
       border-bottom: 1px solid #ccc;
 }
 
-input[type='select']::after {
-    content: url('./loading.gif');
-    position: absolute;
+.onClick .icon:hover {
+    content: '🚀';
+    /* position: absolute;
     right: 30px;
-    top: 10px;
-    font-size: 24px;
-    transform: rotate(0deg);
-    transition: all .5s;
+    top: 10px; */
+    font-size: 104px;
+    transform: rotate(360deg);
+    transition: all 4s;
 }
 
 input {
   text-align: center;
 }
 
-input[type='select']:focus-within::after {
+.icon:hover::after {
   transform: rotate(90deg);
 }
 
@@ -165,7 +165,7 @@ div.row-8 {
   word-wrap: normal;
   font-weight: bold;
   cursor: pointer;
-  display: inline-block;
+  display: block;
 }
 
 .badge-pill {
@@ -179,7 +179,7 @@ div.row-8 {
   padding: 15px;
 }
 
-.col-sm-12 {
+div.col-sm-12 {
   padding-bottom: 5px;
 }
 

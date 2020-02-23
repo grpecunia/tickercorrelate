@@ -172,7 +172,7 @@ class Details extends Component {
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Price
               <span className="badge badge-success badge-pill">
-                ${Number(this.state.tickerData.price).toFixed(2)}
+                $ {Number(this.state.tickerData.price).toFixed(2)}
               </span>
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -207,7 +207,7 @@ class Details extends Component {
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Last Change
               <span className="badge badge-warning badge-pill">
-                {`$ ` + this.state.tickerData.changes + "          "}
+                {`$ ` + Number(this.state.tickerData.changes).toFixed(2) + "          "}
                 <span className="badge badge-light">
                   {this.state.tickerData.changesPercentage}
                 </span>

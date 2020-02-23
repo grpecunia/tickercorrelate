@@ -47,7 +47,7 @@
 }
 
 .ease-in {
-  animation: 2s ease-out 1s 1 slideInFromTop;
+  /* animation: 2s ease-out 1s 1 slideInFromTop; */
 
   /* background: #333; */
   padding: 30px;
@@ -59,8 +59,9 @@ li.tickerOptions {
       padding-top: 5px;
 }
 
-li.tickerOptions :first-child{
-  background-color: lightcyan;
+li.tickerOptions :only-child{
+  background-color: #e9ecef;
+  margin: 2px;
 }
 
 input:focus {
@@ -75,7 +76,7 @@ input{
       border-bottom: 1px solid #ccc;
 }
 
-.md-form::after {
+input[type='select']::after {
     content: url('./loading.gif');
     position: absolute;
     right: 30px;
@@ -85,7 +86,11 @@ input{
     transition: all .5s;
 }
 
-.md-form:focus-within::after {
+input {
+  text-align: center;
+}
+
+input[type='select']:focus-within::after {
   transform: rotate(90deg);
 }
 
@@ -102,9 +107,9 @@ img.ab {
   margin-left: 5vw;
 }
 
-.row .row-bottom {
-  display: fixed;
-  bottom: 0;
+.fixed-bottom {
+  padding-bottom: 10px;
+  margin: 10px
 }
 
 rect {
@@ -112,7 +117,11 @@ rect {
 }
 
 .loading {
-animation:blinkingText 1.2s infinite;
+/* animation:blinkingText 1.2s infinite; */
+}
+
+.loading:hover {
+  animation: none;
 }
 
 @keyframes blinkingText {
@@ -137,7 +146,7 @@ animation:blinkingText 1.2s infinite;
   }
 }
 
-div.col-4 div.row-4 {
+div.col-2 div.row-8 {
   border-style: solid;
   border-width: 1px;
   margin: auto;
@@ -146,9 +155,18 @@ div.col-4 div.row-4 {
   border: 1px solid rgba(0, 0, 0, 0.125);
   background: round;
   color: white;
-  font-size: 24px
+  font-size: 14px;
+  word-wrap: normal;
+  font-weight: bold;
 }
 
 .badge-pill {
   padding: 6px
+}
+
+.btn-outline-success {
+  color: #28a745;
+  border-color: #28a745;
+  border-radius: 16px;
+  padding: 15px;
 }

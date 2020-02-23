@@ -1,51 +1,60 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import Select from "react-select";
-// import {Card, ListGroup, ListGroupItem } from 'react-bootstrap'
-// import Chart from "react-google-charts";
 
 class Details extends Component {
   state = {
     tickerData: [],
     historicalClosePrices: [],
-    commodityHistoricalPrices: []
+    commodityHistoricalPrices: [],
+    tickerRating: [],
+    tickerMetrics : [],
   };
 
-  objectify = array => {
-    return array.reduce((date, price) => {
-      date[price[0]] = price[1];
-      return date;
-    }, {});
-  };
+  //   arrayify = obj => {
+  //     for (let {} in obj) {
+  //      obj.reduce((date, price) => {
+  //       date[price[0]] = price;
+  //       return date;
+  //         }, {});
+
+  //     }
+  //   };
 
   componentDidMount() {
-    axios
-      .get(`https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD`)
-      .then(res => {
-        //This takes some time by the time it gets back
-        let data = JSON.parse(
-          "{" +
-            res.data.slice(
-              res.data.indexOf('"dataset":'),
-              res.data.indexOf("</code>")
-            )
-        );
-        // console.log(data.dataset.data);
-        let newObj = this.objectify(data.dataset.data);
-
-        this.setState({
-          commodityHistoricalPrices: newObj
-        });
-      });
-
     axios
       .get(
         `https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line`
       )
       .then(res => {
-        //This takes some time by the time it gets back
+        console.log(res.data.historical);
         this.setState({
           historicalClosePrices: res.data.historical
+        });
+        // console.log(this.state.tickerData)
+      });
+
+    axios
+      .get(
+        `https://financialmodelingprep.com/api/v3/company-key-metrics/${this.props.match.params.ticker}`
+      )
+      .then(res => {
+
+
+        this.setState({
+          tickerMetrics: res.data.metrics[0]
+        });
+        // console.log(this.state.tickerData)
+      });
+
+    axios
+      .get(
+        `https://financialmodelingprep.com/api/v3/company/rating/${this.props.match.params.ticker}`
+      )
+      .then(res => {
+        console.log(res.data.rating);
+
+        this.setState({
+          tickerRating: res.data.rating
         });
         // console.log(this.state.tickerData)
       });
@@ -67,9 +76,16 @@ class Details extends Component {
     console.log(this.state.commodityHistoricalPrices);
   };
 
-  numberWithCommas = (x) => {
+  numberWithCommas = x => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
+  };
+
+  pushToCommodity = e => {
+    console.log(e.target.innerText, this.props);
+    this.props.history.push(
+      `/Commodities/${e.target.innerText}/${this.props.match.params.ticker}/`
+    );
+  };
 
   render() {
     console.log(this.state.tickerData);
@@ -88,7 +104,7 @@ class Details extends Component {
                 src={this.state.tickerData.image}
                 className="card-img  ab"
                 alt={this.props.match.params.ticker}
-                style={{}}
+                // style={{}}
               />
             </div>
             <div className="col-md-9">
@@ -106,7 +122,11 @@ class Details extends Component {
                     </b>
                     <br />
                     <b>Web:</b>{" "}
-                    <a href={this.state.tickerData.website} target="_blank">
+                    <a
+                      href={this.state.tickerData.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {this.state.tickerData.website}
                     </a>
                   </small>
@@ -119,7 +139,7 @@ class Details extends Component {
           className="row"
           style={{ paddingTop: "10px", paddingLeft: "15px" }}
         >
-          <ul className="list-group col-6">
+          <ul className="list-group col-4">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Industry
               <span className="badge badge-primary badge-pill">
@@ -139,7 +159,7 @@ class Details extends Component {
               </span>
             </li>
           </ul>
-          <ul className="list-group col-6">
+          <ul className="list-group col-4">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Price
               <span className="badge badge-success badge-pill">
@@ -159,152 +179,99 @@ class Details extends Component {
               </span>
             </li>
           </ul>
+          <ul className="list-group col-4">
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              P/E Ratio
+              <span className="badge badge-info badge-pill">
+                {Number(this.state.tickerMetrics["PE ratio"]).toFixed(2)}
+              </span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Market Cap
+              <span className="badge badge-success badge-pill">
+                $
+                {this.numberWithCommas(
+                  Number(this.state.tickerMetrics["Market Cap"])
+                )}
+              </span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Rev / Share
+              <span className="badge badge-primary badge-pill">
+                $
+                {Number(
+                  this.state.tickerMetrics["Revenue per Share"]
+                ).toFixed(2)}
+              </span>
+            </li>
+          </ul>
         </div>
-        <br />
-        <br />
-        {/* <Chart
-          width={"50%"}
-          height={"50vh"}
-          chartType="Line"
-          loader={<div className="loading">Loading Chart...</div>}
-          data={[
-            [
-              { type: "date", label: "price" },
-              this.props.match.params.ticker,
-              "Commodity"
-            ],
-
-            [new Date("2020-02-14"), -0.5, 1581.4],
-            [new Date("2020-02-13"), 0.4, 1575.05],
-            [new Date("2020-02-12"), 0.5, 1563.7],
-            [new Date("2020-02-11"), 2.9, 1570.5],
-            [new Date("2020-02-10"), 6.3, 1573.2],
-            [new Date("2020-02-07"), 9, 1572.65],
-            [new Date("2020-02-06"), 10.6, 1563.3],
-            [new Date("2020-02-05"), 10.3, 1553.3],
-            [new Date("2020-02-04"), 7.4, 1558.35],
-            [new Date("2020-02-03"), 4.4, 1574.75],
-            [new Date("2020-01-31"), 1.1, 1584.2],
-            [new Date("2020-01-30"), -0.2, 1578.25]
-          ]}
-          options={{
-            chart: {
-              title: this.state.tickerData.companyName
-            },
-            width: "900",
-            height: "30vh",
-            series: {
-              // Gives each series an axis name that matches the Y-axis below.
-              0: { axis: this.props.match.params.ticker },
-              1: { axis: "Commodity Price" }
-            },
-            axes: {
-              // Adds labels to each axis; they don't have to match the axis names.
-              y: {
-                Ticker: { label: this.props.match.params.ticker },
-                Comodity: { label: "Comodity" }
-              }
-            }
-          }}
-          rootProps={{ "data-testid": "4" }}
-        /> */}
 
         <h5 className="home">
-          <b>
-            Select one of the options from the commodities below to start the
-            Correlation analysis!
-          </b>
+          <b>Select an Options for Commodity Correlations</b>
         </h5>
-        <div className="row home">
-          <div className="col-4">
+        <div className="container row home">
+          <div onClick={e => this.pushToCommodity(e)} className="col-2">
             <div
-              className="row-4"
+              className="row-8"
               style={{
                 backgroundColor: "#6f89a1"
               }}
             >
               Gold
             </div>
-            <br />
+          </div>
+          <div onClick={e => this.pushToCommodity(e)} className="col-2">
             <div
-              className="row-4"
+              className="row-8"
               style={{
                 backgroundColor: "#6f89a1"
               }}
             >
-              Palladium
+              Copper
             </div>
           </div>
-          <div className="col-4">
+          <div onClick={e => this.pushToCommodity(e)} className="col-2">
             <div
-              className="row-4"
+              className="row-8"
               style={{
                 backgroundColor: "#6f89a1"
               }}
             >
               Crude Oil
             </div>
-            <br />
+          </div>
+          <div onClick={e => this.pushToCommodity(e)} className="col-2">
             <div
-              className="row-4"
+              className="row-8"
               style={{
                 backgroundColor: "#6f89a1"
               }}
             >
-              Corn
+              Cattle
             </div>
           </div>
-          <div className="col-4">
+          <div onClick={e => this.pushToCommodity(e)} className="col-2">
             <div
-              className="row-4"
+              className="row-8"
               style={{
                 backgroundColor: "#6f89a1"
               }}
             >
-              Dairy
+              Coffee
             </div>
-            <br />
+          </div>
+          <div onClick={e => this.pushToCommodity(e)} className="col-2">
             <div
-              className="row-4"
+              className="row-8"
               style={{
                 backgroundColor: "#6f89a1"
               }}
             >
-              Poultry
+              Olive Oil
             </div>
           </div>
         </div>
-        {/* <div className="row row-bottom">
-          <div className="col-4">
-            <Select
-              onChange={e => this.handleChange(e)}
-              name="commodity"
-              placeholder="Commodity"
-              as="select"
-            >
-              <option className="selected">Commodities...</option>
-              {/* {this.showCommoditiesOptions()} */}
-        {/* </Select>
-          </div>
-          <div className="col-4">
-            <input
-              className="date-control"
-              onChange={e => this.handleChange(e)}
-              name="dateFrom"
-              placeholder="Start"
-              type="date"
-            ></input>
-          </div>
-          <div className="col-4">
-            <input
-              className="date-control"
-              onChange={e => this.handleChange(e)}
-              name="dateTo"
-              placeholder="End"
-              type="date"
-            ></input>
-          </div> */}
-        {/* </div> */}
       </div>
     );
   }

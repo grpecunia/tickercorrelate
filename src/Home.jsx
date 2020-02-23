@@ -36,7 +36,11 @@ class Home extends Component {
     console.log(this.props);
     let filteredItems = this.props.tickers.filter(symbol => {
       if (symbol.name) {
-        return symbol.name.toLowerCase().includes(e.target.value);
+        return (
+          symbol.name.toLowerCase().includes(e.target.value) ||
+          symbol.symbol.toLowerCase().includes(e.target.value) ||
+          symbol.symbol.includes(e.target.value)
+        );
       }
     });
     this.setState({
@@ -55,7 +59,10 @@ class Home extends Component {
           name={eachItem.name}
           onClick={() => this.selectItem(eachItem)}
         >
-          {eachItem.name}
+          <span>
+            {" "}
+            <b>{eachItem.symbol}</b> - {eachItem.name}{" "}
+          </span>
         </li>
       );
     });
@@ -86,20 +93,28 @@ class Home extends Component {
   render() {
     return (
       <div className="col-10 offset-1 home ease-in">
-        <div class="jumbotron">
-          <h1 class="display-4">Welcome to TickerCorrelate</h1>
-          <p class="lead">
+        <div className="jumbotron">
+          <h1 className="display-4">
+            <span role="img" aria-label="Graph">
+              📊
+            </span>{" "}
+            TickerCorrelate{" "}
+            <span className="rocket" role="img" aria-label="World">
+              🚀
+            </span>
+          </h1>
+          <p className="lead" style={{ paddingLeft: "10%", paddingRight: "10%" }}>
             Find correlations between more than 13,000+ publicly traded stocks,
             ETF's, Mutual Funds, Bonds and World traded commodities!
           </p>
-          <hr class="my-4" />
+          <hr className="my-4" />
           <p style={{ paddingLeft: "20%", paddingRight: "20%" }}>
             Search for the name of the company, ETF, Mutual Fund or Bond in the
             provided input below and then click on the button to proceed the
             respective company profiles in order to correlate it's market close
             price with different commodities. To learn more about this project
             or the application, please check out the About section on the top
-            navigation bar.
+            navigation.
           </p>
         </div>
         <div className="col-6 offset-3">

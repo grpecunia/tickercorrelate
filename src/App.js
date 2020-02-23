@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import "bootstrap/dist/css/bootstrap.css";
-import { Navbar, Nav, Modal, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
@@ -41,7 +41,7 @@ class App extends Component {
                           .then(res => {
                             this.setState({
                               tickers: res.data.symbolsList
-                            });
+                            })
                           });
 
                         // This GET is to get the Gold Data from the API
@@ -200,7 +200,7 @@ class App extends Component {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="ml-auto">
+            <Nav className="mr-auto">
               <NavDropdown title="About" id="collasible-nav-dropdown">
                 <NavDropdown.Item href='/'>
                   TickerCorrelate

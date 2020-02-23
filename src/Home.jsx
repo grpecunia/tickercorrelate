@@ -111,7 +111,7 @@ class Home extends Component {
           <p style={{ paddingLeft: "20%", paddingRight: "20%" }}>
             Search for the name of the company, ETF, Mutual Fund or Bond in the
             provided input below and then click on the button to proceed the
-            respective company profiles in order to correlate it's market close
+            respective company profiles in order to correlate its market close
             price with different commodities. To learn more about this project
             or the application, please check out the About section on the top
             navigation.

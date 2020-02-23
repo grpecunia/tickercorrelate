@@ -38,13 +38,22 @@ class Details extends Component {
         `https://financialmodelingprep.com/api/v3/company-key-metrics/${this.props.match.params.ticker}`
       )
       .then(res => {
-
-
         this.setState({
           tickerMetrics: res.data.metrics[0]
         });
         // console.log(this.state.tickerData)
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function(res) {
+        // this.setState({
+        //   tickerMetrics: [],
+        // });
+        console.log('this errored...', res)
       });
+
 
     axios
       .get(

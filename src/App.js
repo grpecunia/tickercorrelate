@@ -22,13 +22,13 @@ class App extends Component {
     cattleData: [],
     coffeeData: [],
     evooData: [],
-    data: []
+    
   };
 
 
   async componentDidMount() {
-                              // This GET is to get the 13k+ Ticker and Name List from the API // **** xssHys1jzi6-XeerUyrZ (apiKey) ****
-                              axios
+                              // This GET is to get the 13k+ Ticker and Name List from the API // **** xssHys1jzi6-XeerUyrZ (gm) or 46YBY8Uy2_gZFR_EFD_F (pg)(apiKey) ****
+                              await axios
                                 .get(
                                   `https://financialmodelingprep.com/api/v3/company/stock/list`
                                 )
@@ -48,14 +48,15 @@ class App extends Component {
                                   `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
                                 )
                                 .then(res => {
-                                  let data = JSON.parse(
-                                    "{" +
-                                      res.data.slice(
-                                        res.data.indexOf('"dataset":'),
-                                        res.data.indexOf("</code>")
-                                      )
-                                  );
-                                  let goldData = data.dataset.data;
+                                  // let data = JSON.parse(
+                                  //   "{" +
+                                  //     res.data.slice(
+                                  //       res.data.indexOf('"dataset_data":'),
+                                  //       res.data.indexOf("</code>")
+                                  //     )
+                                  // );
+                                  console.log(res.data)
+                                  let goldData = res.data.dataset_data.data;
 
                                   this.setState({
                                     goldData
@@ -72,15 +73,15 @@ class App extends Component {
                                   `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
                                 )
                                 .then(res => {
-                                  let data = JSON.parse(
-                                    "{" +
-                                      res.data.slice(
-                                        res.data.indexOf('"dataset":'),
-                                        res.data.indexOf("</code>")
-                                      )
-                                  );
+                                  // let data = JSON.parse(
+                                  //   "{" +
+                                  //     res.data.slice(
+                                  //       res.data.indexOf('"dataset":'),
+                                  //       res.data.indexOf("</code>")
+                                  //     )
+                                  // );
                                   // console.log(data.dataset.data);
-                                  let copperData = data.dataset.data;
+                                  let copperData = res.data.dataset_data.data;
 
                                   this.setState({
                                     copperData
@@ -98,15 +99,15 @@ class App extends Component {
                                 )
                                 .then(res => {
                                   //This takes some time by the time it gets back
-                                  let data = JSON.parse(
-                                    "{" +
-                                      res.data.slice(
-                                        res.data.indexOf('"dataset":'),
-                                        res.data.indexOf("</code>")
-                                      )
-                                  );
+                                  // let data = JSON.parse(
+                                  //   "{" +
+                                  //     res.data.slice(
+                                  //       res.data.indexOf('"dataset":'),
+                                  //       res.data.indexOf("</code>")
+                                  //     )
+                                  // );
                                   // console.log(data.dataset.data);
-                                  let crudeOilData = data.dataset.data;
+                                  let crudeOilData = res.data.dataset_data.data;
 
                                   this.setState({
                                     crudeOilData
@@ -124,15 +125,15 @@ class App extends Component {
                                 )
                                 .then(res => {
                                   //This takes some time by the time it gets back
-                                  let data = JSON.parse(
-                                    "{" +
-                                      res.data.slice(
-                                        res.data.indexOf('"dataset":'),
-                                        res.data.indexOf("</code>")
-                                      )
-                                  );
+                                  // let data = JSON.parse(
+                                  //   "{" +
+                                  //     res.data.slice(
+                                  //       res.data.indexOf('"dataset":'),
+                                  //       res.data.indexOf("</code>")
+                                  //     )
+                                  // );
                                   // console.log(data.dataset.data);
-                                  let cattleData = data.dataset.data;
+                                  let cattleData = res.data.dataset_data.data;
 
                                   this.setState({
                                     cattleData
@@ -150,15 +151,15 @@ class App extends Component {
                                 )
                                 .then(res => {
                                   //This takes some time by the time it gets back
-                                  let data = JSON.parse(
-                                    "{" +
-                                      res.data.slice(
-                                        res.data.indexOf('"dataset":'),
-                                        res.data.indexOf("</code>")
-                                      )
-                                  );
+                                  // let data = JSON.parse(
+                                  //   "{" +
+                                  //     res.data.slice(
+                                  //       res.data.indexOf('"dataset":'),
+                                  //       res.data.indexOf("</code>")
+                                  //     )
+                                  // );
                                   // console.log(data.dataset.data);
-                                  let coffeeData = data.dataset.data;
+                                  let coffeeData = res.data.dataset_data.data;
 
                                   this.setState({
                                     coffeeData
@@ -176,15 +177,15 @@ class App extends Component {
                                 )
                                 .then(res => {
                                   //This takes some time by the time it gets back
-                                  let data = JSON.parse(
-                                    "{" +
-                                      res.data.slice(
-                                        res.data.indexOf('"dataset":'),
-                                        res.data.indexOf("</code>")
-                                      )
-                                  );
+                                  // let data = JSON.parse(
+                                  //   "{" +
+                                  //     res.data.slice(
+                                  //       res.data.indexOf('"dataset":'),
+                                  //       res.data.indexOf("</code>")
+                                  //     )
+                                  // );
                                   // console.log(data.dataset.data);
-                                  let evooData = data.dataset.data;
+                                  let evooData = res.data.dataset_data.data;
 
                                   this.setState({
                                     evooData
@@ -314,7 +315,7 @@ class App extends Component {
                   cattleData={this.state.cattleData}
                   coffeeData={this.state.coffeeData}
                   evooData={this.state.evooData}
-                  data={this.state.data}
+                  
                   // structureData={this.structureData()}
                   {...props}
                 />

@@ -1,263 +1,267 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
-import { Modal, Button } from "react-bootstrap"
-
-
+import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
 
 class Commodities extends Component {
   componentDidMount() {
-
-    this.structureData(this.props.match.params.com);
-
+    axios
+      .get(
+        `https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line`
+      )
+      .then(res => {
+        // console.log(res.data.historical);
+        this.setState({
+          historicalClosePrices: res.data.historical
+        });
+        this.structureData(this.props.match.params.com, res.data.historical);
+        console.log(res.data.historical);
+      });
   }
 
-  structureData = (params) => {
-    let dataSet = [];
-    switch (params) {
+  // grabCommodity = (commodity) => {
+  //   this.setState({
+  //     dataSet : commodity
+  //   })
+  // }
+
+  structureData = (dataSet, historicalClosePrices) => {
+    console.log(this.props.match.params.com, 'dsdsadsadasdsa', this.props.goldData);
+    console.log("Setting up dataSet...");
+    switch (dataSet) {
       case "Gold":
-        dataSet = this.state.goldData;
+        dataSet = this.props.goldData;
 
         break;
 
       case "Copper":
-        dataSet = this.state.copperData;
+        dataSet = this.props.copperData;
 
         break;
 
       case "Crude Oil":
-        dataSet = this.state.crudeOilData;
+        dataSet = this.props.crudeOilData;
 
         break;
 
       case "Cattle":
-        dataSet = this.state.cattleData;
+        dataSet = this.props.cattleData;
 
         break;
 
       case "Coffee":
-        dataSet = this.state.coffeeData;
+        dataSet = this.props.coffeeData;
 
         break;
 
       case "Olive Oil":
-        dataSet = this.state.evooData;
+        dataSet = this.props.evooData;
 
         break;
 
-      default: console.log('Error... @ dataSet Switch')
+      default:
+        console.log("Error... @ dataSet Switch");
         break;
     }
-    let tickerData = this.props.tickerData;
+    console.log("Passed the Switch.....", dataSet);
+    console.log(this.props);
+    console.log("Picking up my Ticker Prices >>", historicalClosePrices);
+    console.log("Picking up my Commodity DS>>> ", dataSet);
     let final = [
-      [{ type: "date", label: "values"},
-      this.props.match.params.ticker,
-      this.props.match.params.com]
+      [
+        {
+          type: "date",
+          label: "values"
+        },
+        this.props.match.params.ticker,
+        this.props.match.params.com
+      ]
     ];
-    tickerData.map(eachTick => {
-      if (Object.keys(dataSet).includes(eachTick.date)) {
-        final.push([
-          new Date(eachTick.date),
-          dataSet[eachTick.date],
-          eachTick.price
-        ]);
+    historicalClosePrices.map(
+      // eslint-disable-next-line
+      eachTick => {
+        console.log("<< compiling the two DS >>");
+        if (eachTick.date.includes(Object.keys(dataSet))) { // &&  Object.keys(dataSet) !== undefined)
+          console.log(dataSet)
+          final.push([
+            new Date(eachTick.date),
+            eachTick.close,
+            dataSet
+          ]);
+          // console.log('Are we looping in here??');
+        }
+        // return final;
       }
-    });
+    );
+    console.log('Did we made this MFer to a DataSET??? >>>', final)
     this.setState({
-      data : final
+      data: final
     });
   };
 
   state = {
-    tickerData: this.props.tickerData,
-    goldData: this.props.goldData,
-    copperData: this.props.copperData,
-    crudeOilData: this.props.crudeOilData,
-    cattleData: this.props.cattleData,
-    coffeeData: this.props.coffeeData,
-    evooData: this.props.evooData,
     show: false,
-    data: [
-      [
-        { type: "date", label: " " },
-        this.props.match.params.ticker,
-        this.props.match.params.com
-      ],
-      [
-        new Date("2020-01-01"),
-        345.67,
-        279.0 + +Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-02"),
-        375.39,
-        308.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-04"),
-        423.89,
-        457.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-05"),
-        455.99,
-        389.32 + Math.round(Math.random() * 333)
-      ],
-      [new Date("2020-01-06"), 445.67, 279.0 + Math.round(Math.random() * 333)],
-      [
-        new Date("2020-01-07"),
-        465.39,
-        398.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-08"),
-        423.89,
-        457.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-09"),
-        455.99,
-        389.32 + Math.round(Math.random() * 333)
-      ],
-      [new Date("2020-01-10"), 445.67, 279.0 + Math.round(Math.random() * 333)],
-      [
-        new Date("2020-01-11"),
-        465.39,
-        398.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-12"),
-        523.89,
-        457.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-15"),
-        555.99,
-        389.32 + Math.round(Math.random() * 333)
-      ],
-      [new Date("2020-01-16"), 545.67, 379.0 + Math.round(Math.random() * 333)],
-      [
-        new Date("2020-01-20"),
-        565.39,
-        298.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-21"),
-        523.89,
-        257.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-22"),
-        585.99,
-        319.32 + Math.round(Math.random() * 333)
-      ],
-      [new Date("2020-01-23"), 545.67, 379.0 + Math.round(Math.random() * 333)],
-      [
-        new Date("2020-01-24"),
-        475.39,
-        408.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-25"),
-        523.89,
-        557.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-26"),
-        455.99,
-        489.32 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-27"),
-        465.39,
-        398.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-28"),
-        423.89,
-        357.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-01-29"),
-        555.99,
-        489.32 + Math.round(Math.random() * 333)
-      ],
-      [new Date("2020-01-30"), 645.67, 379.0 + Math.round(Math.random() * 333)],
-      [
-        new Date("2020-02-01"),
-        423.89,
-        457.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-02-02"),
-        555.99,
-        489.32 + Math.round(Math.random() * 333)
-      ],
-      [new Date("2020-02-03"), 445.67, 379.0 + Math.round(Math.random() * 333)],
-      [
-        new Date("2020-02-04"),
-        465.39,
-        398.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-02-05"),
-        523.89,
-        557.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-02-06"),
-        585.99,
-        619.32 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-02-07"),
-        665.39,
-        498.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-02-08"),
-        623.89,
-        457.22 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-02-09"),
-        655.99,
-        589.32 + Math.round(Math.random() * 333)
-      ],
-      [new Date("2020-02-10"), 645.67, 479.0 + Math.round(Math.random() * 333)],
-      [
-        new Date("2020-02-11"),
-        665.39,
-        498.72 + Math.round(Math.random() * 333)
-      ],
-      [
-        new Date("2020-02-12"),
-        623.89,
-        557.22 + Math.round(Math.random() * 333)
-      ],
-      [new Date("2020-02-13"), 685.99, 619.32 + Math.round(Math.random() * 333)]
-    ]
+    // data: [
+    //   [
+    //     { type: "date", label: "value" },
+    //     this.props.match.params.ticker,
+    //     this.props.match.params.com
+    //   ],
+    //   [
+    //     new Date("2020-01-01"),
+    //     345.67,
+    //     279.0 + +Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-02"),
+    //     375.39,
+    //     308.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-04"),
+    //     423.89,
+    //     457.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-05"),
+    //     455.99,
+    //     389.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [new Date("2020-01-06"), 445.67, 279.0 + Math.round(Math.random() * 333)],
+    //   [
+    //     new Date("2020-01-07"),
+    //     465.39,
+    //     398.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-08"),
+    //     423.89,
+    //     457.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-09"),
+    //     455.99,
+    //     389.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [new Date("2020-01-10"), 445.67, 279.0 + Math.round(Math.random() * 333)],
+    //   [
+    //     new Date("2020-01-11"),
+    //     465.39,
+    //     398.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-12"),
+    //     523.89,
+    //     457.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-15"),
+    //     555.99,
+    //     389.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [new Date("2020-01-16"), 545.67, 379.0 + Math.round(Math.random() * 333)],
+    //   [
+    //     new Date("2020-01-20"),
+    //     565.39,
+    //     298.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-21"),
+    //     523.89,
+    //     257.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-22"),
+    //     585.99,
+    //     319.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [new Date("2020-01-23"), 545.67, 379.0 + Math.round(Math.random() * 333)],
+    //   [
+    //     new Date("2020-01-24"),
+    //     475.39,
+    //     408.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-25"),
+    //     523.89,
+    //     557.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-26"),
+    //     455.99,
+    //     489.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-27"),
+    //     465.39,
+    //     398.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-28"),
+    //     423.89,
+    //     357.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-01-29"),
+    //     555.99,
+    //     489.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [new Date("2020-01-30"), 645.67, 379.0 + Math.round(Math.random() * 333)],
+    //   [
+    //     new Date("2020-02-01"),
+    //     423.89,
+    //     457.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-02-02"),
+    //     555.99,
+    //     489.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [new Date("2020-02-03"), 445.67, 379.0 + Math.round(Math.random() * 333)],
+    //   [
+    //     new Date("2020-02-04"),
+    //     465.39,
+    //     398.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-02-05"),
+    //     523.89,
+    //     557.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-02-06"),
+    //     585.99,
+    //     619.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-02-07"),
+    //     665.39,
+    //     498.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-02-08"),
+    //     623.89,
+    //     457.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-02-09"),
+    //     655.99,
+    //     589.32 + Math.round(Math.random() * 333)
+    //   ],
+    //   [new Date("2020-02-10"), 645.67, 479.0 + Math.round(Math.random() * 333)],
+    //   [
+    //     new Date("2020-02-11"),
+    //     665.39,
+    //     498.72 + Math.round(Math.random() * 333)
+    //   ],
+    //   [
+    //     new Date("2020-02-12"),
+    //     623.89,
+    //     557.22 + Math.round(Math.random() * 333)
+    //   ],
+    //   [new Date("2020-02-13"), 685.99, 619.32 + Math.round(Math.random() * 333)]
+    // ]
   };
-
-  // structureData = () => {
-  //   let tickerData = this.props.tickerData;
-  //   let final = [
-  //     { type: "date", label: " " },
-  //     this.props.match.params.ticker,
-  //     this.props.match.params.com
-  //   ];
-  //   tickerData.map(eachTick => {
-  //     if (Object.keys(this.state.goldData).includes(eachTick.date)) {
-  //       final.push([
-  //         new Date(eachTick.date),
-  //         this.state.goldData[eachTick.date],
-  //         eachTick.price
-  //       ]);
-  //     }
-  //   });
-  //   this.setState({
-  //     data: final
-  //   });
-  // };
 
   showModal = () => {
     this.setState({ show: true });
@@ -334,7 +338,6 @@ class Commodities extends Component {
               </Modal.Footer>
             </Modal>
             <button
-              type="submit"
               onClick={this.showModal}
               className="btn-outline-success"
             >

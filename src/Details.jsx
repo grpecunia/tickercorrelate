@@ -10,16 +10,6 @@ class Details extends Component {
     tickerMetrics : [],
   };
 
-  //   arrayify = obj => {
-  //     for (let {} in obj) {
-  //      obj.reduce((date, price) => {
-  //       date[price[0]] = price;
-  //       return date;
-  //         }, {});
-
-  //     }
-  //   };
-
   componentDidMount() {
     axios
       .get(
@@ -27,9 +17,8 @@ class Details extends Component {
       )
       .then(res => {
         // console.log(res.data.historical);
-        let prep = res.data.historical.map(Object.values);
         this.setState({
-          historicalClosePrices: prep
+          historicalClosePrices: res.data.historical
         });
       });
 
@@ -100,7 +89,7 @@ class Details extends Component {
 
   render() {
     // console.log(this.state.historicalClosePrices);
-    // console.log(this.state.tickerData);
+    console.log(this.props);
     // console.log(this.state.commodityHistoricalPrices);
     // console.log(this.state.historicalClosePrices);
     // console.log(this.state.commodityHistoricalPrices);

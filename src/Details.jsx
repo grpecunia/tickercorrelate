@@ -26,11 +26,11 @@ class Details extends Component {
         `https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line`
       )
       .then(res => {
-        console.log(res.data.historical);
+        // console.log(res.data.historical);
+        let prep = res.data.historical.map(Object.values);
         this.setState({
-          historicalClosePrices: res.data.historical
+          historicalClosePrices: prep
         });
-        // console.log(this.state.tickerData)
       });
 
     axios
@@ -47,12 +47,6 @@ class Details extends Component {
         // handle error
         console.log(error);
       })
-      .then(function(res) {
-        // this.setState({
-        //   tickerMetrics: [],
-        // });
-        console.log('this errored...', res)
-      });
 
 
     axios
@@ -60,13 +54,17 @@ class Details extends Component {
         `https://financialmodelingprep.com/api/v3/company/rating/${this.props.match.params.ticker}`
       )
       .then(res => {
-        console.log(res.data.rating);
+        // console.log(res.data.rating);
 
         this.setState({
           tickerRating: res.data.rating
         });
         // console.log(this.state.tickerData)
-      });
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
 
     axios
       .get(
@@ -78,7 +76,11 @@ class Details extends Component {
           tickerData: res.data.profile
         });
         // console.log(this.state.tickerData)
-      });
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
   }
 
   setGraphValues = () => {
@@ -97,7 +99,8 @@ class Details extends Component {
   };
 
   render() {
-    console.log(this.state.tickerData);
+    // console.log(this.state.historicalClosePrices);
+    // console.log(this.state.tickerData);
     // console.log(this.state.commodityHistoricalPrices);
     // console.log(this.state.historicalClosePrices);
     // console.log(this.state.commodityHistoricalPrices);
@@ -113,7 +116,6 @@ class Details extends Component {
                 src={this.state.tickerData.image}
                 className="card-img  ab"
                 alt={this.props.match.params.ticker}
-                // style={{}}
               />
             </div>
             <div className="col-md-9">

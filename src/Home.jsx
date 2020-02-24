@@ -20,7 +20,7 @@ class Home extends Component {
         label: tickerOptions[i].name
       });
     }
-    console.log(tickerList);
+    // console.log(tickerList);
     return tickerList.slice(0, 1000);
   };
 
@@ -33,7 +33,7 @@ class Home extends Component {
   // };
 
   filterStuff = e => {
-    console.log(this.props);
+    // console.log(this.props);
     let filteredItems = this.props.tickers.filter(symbol => {
       if (symbol.name) {
         return (
@@ -47,7 +47,7 @@ class Home extends Component {
       filteredItems,
       search: e.target.value
     });
-    console.log(filteredItems, filteredItems.length);
+    // console.log(filteredItems, filteredItems.length);
   };
 
   showOptions = e => {
@@ -79,8 +79,8 @@ class Home extends Component {
 
   showDetails = (e, i) => {
     if (this.state.searchTicker) {
-      console.log("oh yeah... we went there....");
-      console.log(this.state.searchTicker);
+      // console.log("oh yeah... we went there....");
+      // console.log(this.state.searchTicker);
       this.setState({ selectedOptionTicker: this.state.search.symbol }, () => {
         this.props.history.push(`/Details/${this.state.searchTicker}`);
       });
@@ -95,11 +95,11 @@ class Home extends Component {
       <div className="col-lg-10 col-md-10 col-sm-10 offset-1 home ease-in">
         <div className="jumbotron">
           <h1 className="display-4">
-            <span role="img" aria-label="Graph">
+            <span className="icon" role="img" aria-label="Graph">
               📊
             </span>{" "}
             TickerCorrelate{" "}
-            <span className="rocket icon" role="img" aria-label="World">
+            <span className="icon" role="img" aria-label="World">
               🚀
             </span>
           </h1>

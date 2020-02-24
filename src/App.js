@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import "bootstrap/dist/css/bootstrap.css";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Modal, Button } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import { NavDropdown } from 'react-bootstrap';
@@ -25,161 +25,187 @@ class App extends Component {
     data: []
   };
 
-  objectify = array => {
-    return array.reduce((date, price) => {
-      date[price[0]] = price[1];
-      return date;
-    }, {});
+
+  async componentDidMount() {
+                              // This GET is to get the 13k+ Ticker and Name List from the API // **** xssHys1jzi6-XeerUyrZ (apiKey) ****
+                              axios
+                                .get(
+                                  `https://financialmodelingprep.com/api/v3/company/stock/list`
+                                )
+                                .then(res => {
+                                  this.setState({
+                                    tickers: res.data.symbolsList
+                                  });
+                                })
+                                .catch(function(error) {
+                                  // handle error
+                                  console.log(error);
+                                });
+
+                              // This GET is to get the Gold Data from the API
+                              await axios
+                                .get(
+                                  `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+                                )
+                                .then(res => {
+                                  let data = JSON.parse(
+                                    "{" +
+                                      res.data.slice(
+                                        res.data.indexOf('"dataset":'),
+                                        res.data.indexOf("</code>")
+                                      )
+                                  );
+                                  let goldData = data.dataset.data;
+
+                                  this.setState({
+                                    goldData
+                                  });
+                                })
+                                .catch(function(error) {
+                                  // handle error
+                                  console.log(error);
+                                });
+
+                              // This GET is to get the Copper Data from the API
+                              await axios
+                                .get(
+                                  `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+                                )
+                                .then(res => {
+                                  let data = JSON.parse(
+                                    "{" +
+                                      res.data.slice(
+                                        res.data.indexOf('"dataset":'),
+                                        res.data.indexOf("</code>")
+                                      )
+                                  );
+                                  // console.log(data.dataset.data);
+                                  let copperData = data.dataset.data;
+
+                                  this.setState({
+                                    copperData
+                                  });
+                                })
+                                .catch(function(error) {
+                                  // handle error
+                                  console.log(error);
+                                });
+
+                              // This GET is to get the Crude Oil Data from the API
+                              await axios
+                                .get(
+                                  `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+                                )
+                                .then(res => {
+                                  //This takes some time by the time it gets back
+                                  let data = JSON.parse(
+                                    "{" +
+                                      res.data.slice(
+                                        res.data.indexOf('"dataset":'),
+                                        res.data.indexOf("</code>")
+                                      )
+                                  );
+                                  // console.log(data.dataset.data);
+                                  let crudeOilData = data.dataset.data;
+
+                                  this.setState({
+                                    crudeOilData
+                                  });
+                                })
+                                .catch(function(error) {
+                                  // handle error
+                                  console.log(error);
+                                });
+
+                              // This GET is to get the Cattle Data from the API
+                              await axios
+                                .get(
+                                  `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+                                )
+                                .then(res => {
+                                  //This takes some time by the time it gets back
+                                  let data = JSON.parse(
+                                    "{" +
+                                      res.data.slice(
+                                        res.data.indexOf('"dataset":'),
+                                        res.data.indexOf("</code>")
+                                      )
+                                  );
+                                  // console.log(data.dataset.data);
+                                  let cattleData = data.dataset.data;
+
+                                  this.setState({
+                                    cattleData
+                                  });
+                                })
+                                .catch(function(error) {
+                                  // handle error
+                                  console.log(error);
+                                });
+
+                              // This GET is to get the Arabica Coffee Data from the API
+                              await axios
+                                .get(
+                                  `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+                                )
+                                .then(res => {
+                                  //This takes some time by the time it gets back
+                                  let data = JSON.parse(
+                                    "{" +
+                                      res.data.slice(
+                                        res.data.indexOf('"dataset":'),
+                                        res.data.indexOf("</code>")
+                                      )
+                                  );
+                                  // console.log(data.dataset.data);
+                                  let coffeeData = data.dataset.data;
+
+                                  this.setState({
+                                    coffeeData
+                                  });
+                                })
+                                .catch(function(error) {
+                                  // handle error
+                                  console.log(error);
+                                });
+
+                              // This GET is to get the Poultry Data from the API
+                              await axios
+                                .get(
+                                  `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+                                )
+                                .then(res => {
+                                  //This takes some time by the time it gets back
+                                  let data = JSON.parse(
+                                    "{" +
+                                      res.data.slice(
+                                        res.data.indexOf('"dataset":'),
+                                        res.data.indexOf("</code>")
+                                      )
+                                  );
+                                  // console.log(data.dataset.data);
+                                  let evooData = data.dataset.data;
+
+                                  this.setState({
+                                    evooData
+                                  });
+                                })
+                                .catch(function(error) {
+                                  // handle error
+                                  console.log(error);
+                                });
+                            }
+
+  showModal = () => {
+    this.setState({ show: true });
   };
 
-  // structureComData = dataset => {
-  //   let data = [{ type: "date", label: " " }, "Ticker", "Commodity"];
-  //   for (let i in dataset) {
-  //     data.push(
-  //       '[new Date("' +
-  //         i +
-  //         '"), ' +
-  //         this.state.dataset[i] +
-  //         ", " +
-  //         this.state.dataset[i] +
-  //         "]"
-  //     );
-  //     console.log(data);
-  //     return data;
-  //   }
-  // };
-
-  componentDidMount() {
-    // This GET is to get the 13k+ Ticker and Name List from the API
-    axios
-      .get(`https://financialmodelingprep.com/api/v3/company/stock/list`)
-      .then(res => {
-        this.setState({
-          tickers: res.data.symbolsList
-        });
-      });
-
-    // This GET is to get the Gold Data from the API
-    axios
-      .get(`https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD`)
-      .then(res => {
-        let data = JSON.parse(
-          "{" +
-            res.data.slice(
-              res.data.indexOf('"dataset":'),
-              res.data.indexOf("</code>")
-            )
-        );
-        // console.log(data.dataset.data);
-        let goldData = this.objectify(data.dataset.data);
-        // this.structureComData(goldData);
-        this.setState({
-          goldData
-        });
-      });
-
-    // This GET is to get the Copper Data from the API
-    axios
-      .get(`https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD`)
-      .then(res => {
-        let data = JSON.parse(
-          "{" +
-            res.data.slice(
-              res.data.indexOf('"dataset":'),
-              res.data.indexOf("</code>")
-            )
-        );
-        // console.log(data.dataset.data);
-        let copperData = this.objectify(data.dataset.data);
-
-        this.setState({
-          copperData
-        });
-      });
-
-    // This GET is to get the Crude Oil Data from the API
-    axios
-      .get(`https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD`)
-      .then(res => {
-        //This takes some time by the time it gets back
-        let data = JSON.parse(
-          "{" +
-            res.data.slice(
-              res.data.indexOf('"dataset":'),
-              res.data.indexOf("</code>")
-            )
-        );
-        // console.log(data.dataset.data);
-        let crudeOilData = this.objectify(data.dataset.data);
-
-        this.setState({
-          crudeOilData
-        });
-      });
-
-    // This GET is to get the Cattle Data from the API
-    axios
-      .get(`https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD`)
-      .then(res => {
-        //This takes some time by the time it gets back
-        let data = JSON.parse(
-          "{" +
-            res.data.slice(
-              res.data.indexOf('"dataset":'),
-              res.data.indexOf("</code>")
-            )
-        );
-        // console.log(data.dataset.data);
-        let cattleData = this.objectify(data.dataset.data);
-
-        this.setState({
-          cattleData
-        });
-      });
-
-    // This GET is to get the Arabica Coffee Data from the API
-    axios
-      .get(`https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD`)
-      .then(res => {
-        //This takes some time by the time it gets back
-        let data = JSON.parse(
-          "{" +
-            res.data.slice(
-              res.data.indexOf('"dataset":'),
-              res.data.indexOf("</code>")
-            )
-        );
-        // console.log(data.dataset.data);
-        let coffeeData = this.objectify(data.dataset.data);
-
-        this.setState({
-          coffeeData
-        });
-      });
-
-    // This GET is to get the Poultry Data from the API
-    axios
-      .get(`https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD`)
-      .then(res => {
-        //This takes some time by the time it gets back
-        let data = JSON.parse(
-          "{" +
-            res.data.slice(
-              res.data.indexOf('"dataset":'),
-              res.data.indexOf("</code>")
-            )
-        );
-        // console.log(data.dataset.data);
-        let evooData = this.objectify(data.dataset.data);
-
-        this.setState({
-          evooData
-        });
-      });
-  }
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   render() {
-    console.log(this.state.goldData);
+    // console.log(this.state.goldData);
     return (
       <div className="App">
         <Navbar
@@ -202,7 +228,9 @@ class App extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <NavDropdown title="About" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="/">TickerCorrelate</NavDropdown.Item>
+                <NavDropdown.Item onClick={this.showModal}>
+                  TickerCorrelate
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="https://riverapecunia.com">
                   GRP (Developer)
@@ -217,6 +245,44 @@ class App extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        <Modal
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          show={this.state.show}
+        >
+          <Modal.Header>
+            <Modal.Title
+              id="contained-modal-title-vcenter"
+              style={{ textAlign: "center" }}
+            >
+              <span role="img" aria-label="Graph">
+                📊
+              </span>{" "}
+              TickerCorrelate App{" "}
+              <span className="rocket icon" role="img" aria-label="World">
+                🚀
+              </span>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>
+              <b>** Information Disclaimer **</b>
+            </h4>
+            <p>
+              The correlation analysis gathered from this application are by no
+              means menat as equity or commodity trading advice. Please contact
+              your financial advisor before making any desicions with the
+              provided information. The sole purpose of this app is to determine
+              if and when ticker value prices and commodities have a correlation
+              which in fact may help narrow down the real of possibilities of
+              their day to day behavior.
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.hideModal}>Close</Button>
+          </Modal.Footer>
+        </Modal>
 
         <div className="row">
           <Switch>

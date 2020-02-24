@@ -76,15 +76,15 @@ input{
       border-bottom: 1px solid #ccc;
 }
 
-.onClick .icon:hover {
+/* .icon:hover {
     content: '🚀';
-    /* position: absolute;
+    position: absolute;
     right: 30px;
-    top: 10px; */
+    top: 10px;
     font-size: 104px;
     transform: rotate(360deg);
     transition: all 4s;
-}
+} */
 
 input {
   text-align: center;
@@ -187,4 +187,8 @@ div.col-sm-12 {
   .row-8 {
     display: inline;
   }
+}
+
+.modal-header {
+  display: initial;
 }

@@ -10,6 +10,8 @@ class Home extends Component {
     search: ""
   };
 
+  
+
   showTickerOptions = () => {
     console.log(this.props.tickers);
     let tickerOptions = { ...this.props.tickers };

@@ -1,5 +1,6 @@
 /* eslint-disable array-callback-return */
 import React, { Component } from 'react';
+import logo from "./logob.svg";
 
 
 class Home extends Component {
@@ -26,13 +27,6 @@ class Home extends Component {
     return tickerList.slice(0, 1000);
   };
 
-  // handleChangeTicker = selectedOptionTicker => {
-  //   console.log(selectedOptionTicker);
-
-  //   this.setState({ selectedOptionTicker });
-  //   // this.setState({ test: selectedOptionTicker.target.value });
-  //   console.log(`Ticker selected:`, selectedOptionTicker);
-  // };
 
   filterStuff = e => {
     // console.log(this.props);
@@ -56,7 +50,7 @@ class Home extends Component {
     return this.state.filteredItems.slice(0, 3).map((eachItem, i) => {
       return (
         <li
-          key={eachItem.symbol}
+          key={i}
           className="tickerOptions"
           name={eachItem.name}
           onClick={() => this.selectItem(eachItem)}
@@ -97,13 +91,14 @@ class Home extends Component {
       <div className="col-lg-10 col-md-10 col-sm-10 offset-1 home ease-in">
         <div className="jumbotron">
           <h1 className="display-4">
-            <span className="icon" role="img" aria-label="Graph">
-              📊
-            </span>{" "}
-            TickerCorrelate{" "}
-            <span className="icon" role="img" aria-label="World">
-              🚀
-            </span>
+            <img
+              alt="TickerCorrelate"
+              src={logo}
+              width="60"
+              height="60"
+              className="d-inline-block align-top"
+            />{" "}
+            TickerCorrelate
           </h1>
           <p
             className="lead"

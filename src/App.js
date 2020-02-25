@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import logob from "./logob.svg";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav, Modal, Button } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
@@ -267,24 +268,19 @@ class App extends Component {
               id="contained-modal-title-vcenter"
               style={{ textAlign: "center" }}
             >
-              <span role="img" aria-label="Graph">
-                📊
-              </span>{" "}
-              TickerCorrelate App{" "}
-              <span className="rocket icon" role="img" aria-label="World">
-                🚀
-              </span>
+              <img alt="TickerCorrelate" src={logob} width="30" height="30" />{" "}
+              TickerCorrelate App
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>
-              <b>** Information Disclaimer **</b>
+            <h4 className="home">
+              <b>Application Information Disclaimer:</b>
             </h4>
-            <p>
+            <p style={{ paddingLeft: "10%", paddingRight: "10%" }}>
               The correlation analysis gathered from this application are by no
-              means menat as equity or commodity trading advice. Please contact
+              means meant as equity or commodity trading advice. Please contact
               your financial advisor before making any desicions with the
-              provided information. The sole purpose of this app is to determine
+              provided information. The sole purpose of this application is to determine
               if and when ticker value prices and commodities have a correlation
               which in fact may help narrow down the real of possibilities of
               their day to day behavior.

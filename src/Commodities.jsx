@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import Chart from "react-google-charts";
 import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
+import MyChart from "./MyChart";
+
 
 class Commodities extends Component {
+
   componentDidMount() {
+    // Axios GET for Ticker Historical Prices @ Market Close Info
     axios
       .get(
         `https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line`
@@ -25,9 +28,10 @@ class Commodities extends Component {
   //   })
   // }
 
+  // Functionality that structures the dataSet needed to populate the ticker/commodity line graph
   structureData = (dataSet, historicalClosePrices) => {
-    console.log(this.props.match.params.com, 'dsdsadsadasdsa', this.props.goldData);
-    console.log("Setting up dataSet...");
+    console.log(this.props.goldData);
+    console.log("Setting up dataSet...", dataSet, historicalClosePrices);
     switch (dataSet) {
       case "Gold":
         dataSet = this.props.goldData;
@@ -67,6 +71,7 @@ class Commodities extends Component {
     console.log(this.props);
     console.log("Picking up my Ticker Prices >>", historicalClosePrices);
     console.log("Picking up my Commodity DS>>> ", dataSet);
+    let corrDS = [];
     let final = [
       [
         {
@@ -77,196 +82,68 @@ class Commodities extends Component {
         this.props.match.params.com
       ]
     ];
+
     historicalClosePrices.map(
       // eslint-disable-next-line
       eachTick => {
-        console.log("<< compiling the two DS >>");
-        if (eachTick.date.includes(Object.keys(dataSet))) { // &&  Object.keys(dataSet) !== undefined)
-          console.log(dataSet)
-          final.push([
-            new Date(eachTick.date),
-            eachTick.close,
-            dataSet
-          ]);
-          // console.log('Are we looping in here??');
-        }
+        // console.log(
+        //   "<< compiling the two DS >>",
+        //   Object.keys(dataSet).includes(eachTick.date),
+        //   dataSet,
+        //   eachTick
+        // );
+        //if (Object.keys(dataSet).includes(eachTick.date) ) { // &&  Object.keys(dataSet) !== undefined)
+        // eslint-disable-next-line
+        dataSet.map(eachData => {
+          if (eachData.includes(eachTick.date)) {
+            final.push([new Date(eachTick.date), eachTick.close, eachData[1]]);
+            corrDS.push([new Date(eachTick.date), eachTick.close, eachData[1]]);
+          }
+        });
+
+        // console.log('Are we looping in here??');
+        //}
         // return final;
       }
     );
-    console.log('Did we made this MFer to a DataSET??? >>>', final)
+    this.createCorrDataSet(corrDS)
+    console.log("Did we made this MFer to a DataSET??? >>>", final);
     this.setState({
       data: final
     });
   };
 
+  createCorrDataSet = (arr) => {
+    console.log('start generating corr DS>>> ', arr)
+    let ticketArr = [];
+    let commoArr = [];
+    // let r, r2;
+    arr.forEach(row => {
+      ticketArr.push(row[1])
+      commoArr.push(row[2])
+    })
+    console.log(ticketArr, commoArr)
+    // r = correlation.rank([ticketArr], [commoArr]);
+    // r2 = correlation.determination([ticketArr], [commoArr]);
+    // this.setState({
+    //   r : r,
+    //   r2 : r2
+    // })
+  }
+
+  // This is STATE of Commodities
   state = {
     show: false,
-    // data: [
-    //   [
-    //     { type: "date", label: "value" },
-    //     this.props.match.params.ticker,
-    //     this.props.match.params.com
-    //   ],
-    //   [
-    //     new Date("2020-01-01"),
-    //     345.67,
-    //     279.0 + +Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-02"),
-    //     375.39,
-    //     308.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-04"),
-    //     423.89,
-    //     457.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-05"),
-    //     455.99,
-    //     389.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [new Date("2020-01-06"), 445.67, 279.0 + Math.round(Math.random() * 333)],
-    //   [
-    //     new Date("2020-01-07"),
-    //     465.39,
-    //     398.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-08"),
-    //     423.89,
-    //     457.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-09"),
-    //     455.99,
-    //     389.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [new Date("2020-01-10"), 445.67, 279.0 + Math.round(Math.random() * 333)],
-    //   [
-    //     new Date("2020-01-11"),
-    //     465.39,
-    //     398.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-12"),
-    //     523.89,
-    //     457.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-15"),
-    //     555.99,
-    //     389.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [new Date("2020-01-16"), 545.67, 379.0 + Math.round(Math.random() * 333)],
-    //   [
-    //     new Date("2020-01-20"),
-    //     565.39,
-    //     298.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-21"),
-    //     523.89,
-    //     257.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-22"),
-    //     585.99,
-    //     319.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [new Date("2020-01-23"), 545.67, 379.0 + Math.round(Math.random() * 333)],
-    //   [
-    //     new Date("2020-01-24"),
-    //     475.39,
-    //     408.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-25"),
-    //     523.89,
-    //     557.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-26"),
-    //     455.99,
-    //     489.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-27"),
-    //     465.39,
-    //     398.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-28"),
-    //     423.89,
-    //     357.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-01-29"),
-    //     555.99,
-    //     489.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [new Date("2020-01-30"), 645.67, 379.0 + Math.round(Math.random() * 333)],
-    //   [
-    //     new Date("2020-02-01"),
-    //     423.89,
-    //     457.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-02-02"),
-    //     555.99,
-    //     489.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [new Date("2020-02-03"), 445.67, 379.0 + Math.round(Math.random() * 333)],
-    //   [
-    //     new Date("2020-02-04"),
-    //     465.39,
-    //     398.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-02-05"),
-    //     523.89,
-    //     557.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-02-06"),
-    //     585.99,
-    //     619.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-02-07"),
-    //     665.39,
-    //     498.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-02-08"),
-    //     623.89,
-    //     457.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-02-09"),
-    //     655.99,
-    //     589.32 + Math.round(Math.random() * 333)
-    //   ],
-    //   [new Date("2020-02-10"), 645.67, 479.0 + Math.round(Math.random() * 333)],
-    //   [
-    //     new Date("2020-02-11"),
-    //     665.39,
-    //     498.72 + Math.round(Math.random() * 333)
-    //   ],
-    //   [
-    //     new Date("2020-02-12"),
-    //     623.89,
-    //     557.22 + Math.round(Math.random() * 333)
-    //   ],
-    //   [new Date("2020-02-13"), 685.99, 619.32 + Math.round(Math.random() * 333)]
-    // ]
+    data: [],
+    r: 0,
+    r2 : 0,
   };
 
+  // Functionality to Show the Correlation Results Modal
   showModal = () => {
     this.setState({ show: true });
   };
-
+  // Functionality to Hide the Correlation Results Modal
   hideModal = () => {
     this.setState({ show: false });
   };
@@ -337,44 +214,16 @@ class Commodities extends Component {
                 <Button onClick={this.hideModal}>Close</Button>
               </Modal.Footer>
             </Modal>
-            <button
-              onClick={this.showModal}
-              className="btn-outline-success"
-            >
+            <button onClick={this.showModal} className="btn-outline-success">
               TickerCorrelate
             </button>
           </div>
           <div className="col-lg-7 offset-1 col-md-12 col-sm-12">
-            <Chart
-              width={"500"}
-              height={"300"}
-              chartType="Line"
-              loader={<div className="loading">Loading Chart...</div>}
-              data={this.state.data}
-              options={{
-                chart: {
-                  title: `${this.props.match.params.com +
-                    " Price Mapped with the Price of " +
-                    this.props.match.params.ticker +
-                    " at Market Close Price"}`
-                },
-                width: "600",
-                height: "350",
-                series: {
-                  // Gives each series an axis name that matches the Y-axis below.
-                  0: { axis: this.props.match.params.ticker },
-                  1: { axis: "Commodity Price" }
-                },
-                axes: {
-                  // Adds labels to each axis; they don't have to match the axis names.
-                  y: {
-                    Ticker: { label: this.props.match.params.ticker },
-                    Comodity: { label: "Comodity" }
-                  }
-                }
-              }}
-              rootProps={{ "data-testid": "4" }}
-            />
+            {this.props.everythingLoaded ? (
+              <MyChart data={this.state.data} {...this.props} />
+            ) : (
+              <div className="loading">Loading Chart...</div>
+            )}
           </div>
         </div>
       </div>

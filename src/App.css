@@ -192,3 +192,19 @@ div.col-sm-12 {
 .modal-header {
   display: initial;
 }
+
+.footer {
+  position:absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  background-color: #56728c;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#root {
+  padding-bottom:60px;
+}

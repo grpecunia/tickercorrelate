@@ -70,7 +70,7 @@ class Commodities extends Component {
       [
         {
           type: "date",
-          label: "values"
+          label: "Timeline Scoping Tool"
         },
         this.props.match.params.ticker,
         this.props.match.params.com
@@ -216,15 +216,15 @@ class Commodities extends Component {
   };
 
   handleStartDateChange = (e) => {
-    console.log(e.target.value);
+    console.log(e.target.name ,  e.target.value);
   };
 
   handleEndDateChange = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.name, e.target.value);
   };
 
-  sliceCorrDS = () => {
-
+  sliceCorrDS = (arr, startDate, endDate) => {
+    console.log('consoling myself....')
   }
 
   render() {
@@ -250,6 +250,7 @@ class Commodities extends Component {
               <label>Correlation Start Date</label>
               <input
                 type="date"
+                name="startDate"
                 required
                 onChange={e => this.handleStartDateChange(e)}
               ></input>
@@ -258,9 +259,11 @@ class Commodities extends Component {
               <label>Correlation End Date</label>
               <input
                 type="date"
+                name="endDate"
                 required
                 onChange={e => this.handleEndDateChange(e)}
-              ></input>
+                // onSubmit={e => this.sliceCorrDS(e)}
+              />
             </div>
             <br />
             <Modal
@@ -276,29 +279,78 @@ class Commodities extends Component {
                   style={{ textAlign: "center" }}
                 >
                   <b>
-                    <span role="img" aria-label="Graph">
-                      📊
-                    </span>{" "}
-                    Pearson Correlation Results for{" "}
-                    {this.props.match.params.ticker}
-                    {" + "}
-                    {this.props.match.params.com}
+                    <h3 className="home">
+                      <span role="img" aria-label="Graph">
+                        📊
+                      </span>{" "}
+                      Pearson Correlation Results for{" "}
+                      {this.props.match.params.ticker}
+                      {" + "}
+                      {this.props.match.params.com}
+                    </h3>
                   </b>
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div className="row">
-                  <div className="col-6">
+                <div className="row" style={{ paddingLeft: "20px" }}>
+                  <div className="col-4 offset-1">
                     <h4 className="home">
-                      r = {this.state.r.toFixed(3)} | r² ={" "}
+                      {"r = "}
+                      {this.state.r.toFixed(3)}
+                    </h4>
+                    <table className="table table-sm table-striped">
+                      <tbody>
+                        <tr>
+                          <th scope="col">r Value</th>
+                          <th scope="col">Correlation Strength</th>
+                        </tr>
+                        <tr className="table-success">
+                          <td>{"±0.75 to ±1"}</td>
+                          <td>Very Strong</td>
+                        </tr>
+                        <tr className="table-warning">
+                          <td>{"±0.5 to ±0.75"}</td>
+                          <td>Moderate</td>
+                        </tr>
+                        <tr className="table-danger">
+                          <td>{"±0.25 to ±0.5"}</td>
+                          <td>Weak</td>
+                        </tr>
+                        <tr className="table-info">
+                          <td>{"0 to ±0.25"}</td>
+                          <td>Negligible</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br />
+                    <h4 className="home">
+                      {"r² = "}
                       {this.state.rSquared.toFixed(3)}
                     </h4>
-                    <p>
-                      Pearson correlation coefficient, also referred to as
-                      Pearson's r, the Pearson product-moment correlation
-                      coefficient or the bivariate correlation, is a measure of
-                      the linear correlation between two variables X and Y.
-                    </p>
+                    <table className="table table-sm table-striped">
+                      <tbody>
+                        <tr>
+                          <th scope="col">r² Value</th>
+                          <th scope="col">Determination Strength</th>
+                        </tr>
+                        <tr className="table-success">
+                          <td>{"0.7 < r² < 1.0"}</td>
+                          <td>Strong</td>
+                        </tr>
+                        <tr className="table-warning">
+                          <td>{"0.4 < r² < 0.7"}</td>
+                          <td>Medium</td>
+                        </tr>
+                        <tr className="table-danger">
+                          <td>{"0.2 < r² < 0.4"}</td>
+                          <td>Small</td>
+                        </tr>
+                        <tr className="table-info">
+                          <td>{"r² < 0.2"}</td>
+                          <td>None</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                   <div className="col-6">
                     <Chart
@@ -312,7 +364,7 @@ class Commodities extends Component {
                       }
                       data={this.state.dataSP}
                       options={{
-                        title: `${this.props.match.params.com} vs. ${this.props.match.params.ticker} comparison`,
+                        title: `${this.props.match.params.com} vs. ${this.props.match.params.ticker} ScatterPlot Graph`,
                         hAxis: {
                           title: `${this.props.match.params.com}`,
                           minValue: 0,
@@ -327,6 +379,7 @@ class Commodities extends Component {
                       }}
                       rootProps={{ "data-testid": "1" }}
                     />
+                    <br />
                   </div>
                 </div>
               </Modal.Body>
@@ -334,7 +387,12 @@ class Commodities extends Component {
                 <Button onClick={this.hideModal}>Close</Button>
               </Modal.Footer>
             </Modal>
-            <button onClick={this.showModal} className="btn-outline-success">
+            <button
+              type="submit"
+              onClick={this.showModal}
+              onSubmit={this.sliceCorrDS(this.state.corrDS)}
+              className="btn-outline-success"
+            >
               TickerCorrelate
             </button>
           </div>

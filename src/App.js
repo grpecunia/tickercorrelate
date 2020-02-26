@@ -10,6 +10,8 @@ import Home from './Home'
 import Details from './Details'
 import Footer from './Footer'
 import Commodities from './Commodities'
+import APIs from './APIs'
+import Guide from './Guide'
 import "./App.css";
 
 
@@ -46,7 +48,7 @@ class App extends Component {
       // This GET is to get the Gold Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
           // let data = JSON.parse(
@@ -71,7 +73,7 @@ class App extends Component {
       // This GET is to get the Copper Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
           // let data = JSON.parse(
@@ -96,7 +98,7 @@ class App extends Component {
       // This GET is to get the Crude Oil Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
           //This takes some time by the time it gets back
@@ -122,7 +124,7 @@ class App extends Component {
       // This GET is to get the Cattle Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
           //This takes some time by the time it gets back
@@ -148,7 +150,7 @@ class App extends Component {
       // This GET is to get the Arabica Coffee Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
           //This takes some time by the time it gets back
@@ -174,7 +176,7 @@ class App extends Component {
       // This GET is to get the Poultry Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
           //This takes some time by the time it gets back
@@ -250,9 +252,8 @@ class App extends Component {
               <Nav.Link href="https://github.com/grpecunia/tickercorrelate">
                 Github
               </Nav.Link>
-              <Nav.Link href="https://github.com/grpecunia/tickercorrelate">
-                API's
-              </Nav.Link>
+              <Nav.Link href="/APIs">API's</Nav.Link>
+              <Nav.Link href="/Guide">Statistical Guide</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -273,17 +274,28 @@ class App extends Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4 className="home">
-              <b>Application Information Disclaimer:</b>
+            <h3 className="home">
+              <b>About the TickerCorrelate Project</b>
+            </h3>
+            <p style={{ paddingLeft: "10%", paddingRight: "10%" }}>
+              This project was intended as an educational tool for programers
+              that want to learn about how to manipulate API data into datasets
+              for building real world applications. It is also intended as a
+              tool for data analyst or novel curious thinkers that want to dive
+              into correlating analysis for stock market information.
+            </p>
+            <hr />
+            <h4 className="home" style={{color:'red'}}>
+              <b>Application Information Disclaimer</b>
             </h4>
             <p style={{ paddingLeft: "10%", paddingRight: "10%" }}>
               The correlation analysis gathered from this application are by no
               means meant as equity or commodity trading advice. Please contact
               your financial advisor before making any desicions with the
-              provided information. The sole purpose of this application is to determine
-              if and when ticker value prices and commodities have a correlation
-              which in fact may help narrow down the real of possibilities of
-              their day to day behavior.
+              provided information. The sole purpose of this application is to
+              determine if and when ticker value prices and commodities have a
+              correlation which in fact may help narrow down the real of
+              possibilities of their day to day behavior.
             </p>
           </Modal.Body>
           <Modal.Footer>
@@ -326,6 +338,12 @@ class App extends Component {
               />
             )}
           />
+          <Route
+            exact
+            path="/APIs"
+            render={props => <APIs tickers={this.state.tickers} {...props} />}
+          />
+          <Route exact path="/Guide" render={props => <Guide {...props} />} />
         </Switch>
         <Footer />
       </div>

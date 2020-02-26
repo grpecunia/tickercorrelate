@@ -33,12 +33,24 @@ class App extends Component {
     let promises = [];
     promises.push(
       // This GET is to get the 13k+ Ticker and Name List from the API // **** xssHys1jzi6-XeerUyrZ (gm) or 46YBY8Uy2_gZFR_EFD_F (pg)(apiKey) ****
-      await axios
+      axios
         .get(`https://financialmodelingprep.com/api/v3/company/stock/list`)
         .then(res => {
-          this.setState({
-            tickers: res.data.symbolsList
-          });
+          //this.setState({
+          return { tickers: res.data.symbolsList };
+          //});
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        }),
+
+      axios
+        .get(`https://financialmodelingprep.com/api/v3/majors-indexes`)
+        .then(res => {
+          //this.setState({
+          return { liveTickerInfo: res.data.majorIndexesList };
+          //});
         })
         .catch(function(error) {
           // handle error
@@ -51,19 +63,11 @@ class App extends Component {
           `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
-          // let data = JSON.parse(
-          //   "{" +
-          //     res.data.slice(
-          //       res.data.indexOf('"dataset_data":'),
-          //       res.data.indexOf("</code>")
-          //     )
-          // );
-          console.log(res.data);
           let goldData = res.data.dataset_data.data;
 
-          this.setState({
-            goldData
-          });
+          //this.setState({
+          return { goldData };
+          //});
         })
         .catch(function(error) {
           // handle error
@@ -76,19 +80,11 @@ class App extends Component {
           `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
-          // let data = JSON.parse(
-          //   "{" +
-          //     res.data.slice(
-          //       res.data.indexOf('"dataset":'),
-          //       res.data.indexOf("</code>")
-          //     )
-          // );
-          // console.log(data.dataset.data);
           let copperData = res.data.dataset_data.data;
 
-          this.setState({
-            copperData
-          });
+          //this.setState({
+          return { copperData };
+          //});
         })
         .catch(function(error) {
           // handle error
@@ -101,20 +97,11 @@ class App extends Component {
           `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
-          //This takes some time by the time it gets back
-          // let data = JSON.parse(
-          //   "{" +
-          //     res.data.slice(
-          //       res.data.indexOf('"dataset":'),
-          //       res.data.indexOf("</code>")
-          //     )
-          // );
-          // console.log(data.dataset.data);
           let crudeOilData = res.data.dataset_data.data;
 
-          this.setState({
-            crudeOilData
-          });
+          //this.setState({
+          return { crudeOilData };
+          //});
         })
         .catch(function(error) {
           // handle error
@@ -127,20 +114,11 @@ class App extends Component {
           `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
-          //This takes some time by the time it gets back
-          // let data = JSON.parse(
-          //   "{" +
-          //     res.data.slice(
-          //       res.data.indexOf('"dataset":'),
-          //       res.data.indexOf("</code>")
-          //     )
-          // );
-          // console.log(data.dataset.data);
           let cattleData = res.data.dataset_data.data;
 
-          this.setState({
-            cattleData
-          });
+          //this.setState({
+          return { cattleData };
+          //});
         })
         .catch(function(error) {
           // handle error
@@ -153,20 +131,11 @@ class App extends Component {
           `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
-          //This takes some time by the time it gets back
-          // let data = JSON.parse(
-          //   "{" +
-          //     res.data.slice(
-          //       res.data.indexOf('"dataset":'),
-          //       res.data.indexOf("</code>")
-          //     )
-          // );
-          // console.log(data.dataset.data);
           let coffeeData = res.data.dataset_data.data;
 
-          this.setState({
-            coffeeData
-          });
+          //this.setState({
+          return { coffeeData };
+          // });
         })
         .catch(function(error) {
           // handle error
@@ -179,33 +148,31 @@ class App extends Component {
           `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
         )
         .then(res => {
-          //This takes some time by the time it gets back
-          // let data = JSON.parse(
-          //   "{" +
-          //     res.data.slice(
-          //       res.data.indexOf('"dataset":'),
-          //       res.data.indexOf("</code>")
-          //     )
-          // );
-          // console.log(data.dataset.data);
           let evooData = res.data.dataset_data.data;
 
-          this.setState({
-            evooData
-          });
+          //this.setState({
+          return { evooData };
+          //});
         })
         .catch(function(error) {
           // handle error
           console.log(error);
         })
     );
-    console.log(promises);
+    // console.log(promises);
     this.everythingLoaded(promises);
   }
+
   everythingLoaded = promises => {
     Promise.all(promises).then(val => {
-      console.log("everything loaded", this.props, val);
-      this.setState({ everythingLoaded: true });
+      console.log("Everything has Loaded....", val);
+      let obj = { everythingLoaded: true };
+
+      val.map(v => {
+        console.log(Object.keys(v)[0], Object.values(v)[0]);
+        obj[Object.keys(v)[0]] = Object.values(v)[0];
+      });
+      this.setState(obj);
     });
   };
 
@@ -285,7 +252,7 @@ class App extends Component {
               into correlating analysis for stock market information.
             </p>
             <hr />
-            <h4 className="home" style={{color:'red'}}>
+            <h4 className="home" style={{ color: "red" }}>
               <b>Application Information Disclaimer</b>
             </h4>
             <p style={{ paddingLeft: "10%", paddingRight: "10%" }}>

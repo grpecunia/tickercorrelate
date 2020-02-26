@@ -47,7 +47,7 @@ class Home extends Component {
   };
 
   showOptions = e => {
-    return this.state.filteredItems.slice(0, 3).map((eachItem, i) => {
+    return this.state.filteredItems.slice(0, 10).map((eachItem, i) => {
       return (
         <li
           key={i}

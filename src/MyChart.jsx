@@ -7,19 +7,20 @@ class MyChart extends Component {
         return (
           <div>
             <Chart
-              width={"500"}
-              height={"300"}
+              width={"100%"}
+              height={"100%"}
               chartType="Line"
               loader={<div className="loading">Loading Chart...</div>}
               data={this.props.data}
               options={{
+                // colors: ["#e7711b", "#f1ca3a"],
                 chart: {
                   title: `${this.props.match.params.com +
                     " Price Mapped with the Price of " +
                     this.props.match.params.ticker +
                     " at Market Close Price"}`
                 },
-                width: "600",
+                width: "100%",
                 height: "350",
                 series: {
                   // Gives each series an axis name that matches the Y-axis below.
@@ -35,6 +36,31 @@ class MyChart extends Component {
                 }
               }}
               rootProps={{ "data-testid": "4" }}
+              chartPackages={["corechart", "controls"]}
+              controls={[
+                {
+                  controlType: "ChartRangeFilter",
+                  options: {
+                    filterColumnIndex: 0,
+                    ui: {
+                      chartType: "LineChart",
+                      chartOptions: {
+                        chartArea: { width: "75%", height: "45%"},
+                        hAxis: { baselineColor: "none" }
+                      }
+                    }
+                  },
+                  controlPosition: "bottom",
+                  controlWrapperParams: {
+                    state: {
+                      range: {
+                        start: new Date(1970, 0, 0),
+                        end: new Date(2050, 0, 0)
+                      }
+                    }
+                  }
+                }
+              ]}
             />
           </div>
         );

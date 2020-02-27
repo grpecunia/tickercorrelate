@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import logob from "./logob.svg";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav, Modal, Button } from "react-bootstrap";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import axios from "axios";
 import { NavDropdown } from 'react-bootstrap';
 import Home from './Home'
@@ -221,7 +221,7 @@ class App extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <NavDropdown title="About" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="/APIs">API's</NavDropdown.Item>
+                <NavDropdown.Item path="/APIs">API's</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   href="https://github.com/grpecunia/tickercorrelate"
@@ -243,8 +243,22 @@ class App extends Component {
                   TickerCorrelate
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/Guide">Statistical Guide</Nav.Link>
-              <Nav.Link href="/CorrelationsJS">Correlations w/ JavaScript</Nav.Link>
+              <Nav.Link>
+                <Link
+                  to="/Guide"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Statistical Guide
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link
+                  to="/CorrelationsJS"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Correlations w/ JavaScript
+                </Link>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

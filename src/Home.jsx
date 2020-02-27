@@ -95,6 +95,7 @@ class Home extends Component {
 
   render() {
     return (
+      <React.Fragment>
       <div className="col-lg-10 col-md-10 col-sm-10 offset-1 home ease-in">
         <div className="jumbotron">
           <h1 className="display-4">
@@ -153,15 +154,17 @@ class Home extends Component {
               How to use the{" "}
               <span className="text-muted">TickerCorrelate App?</span>
             </h2>
-            <p className="lead">
+            <p className="lead" id="howTo">
               Very simple! Search for the name or the ticker symbol of the
               company, ETF, Mutual Fund or Bond in the provided search bar
               above. Once you see your desired ticker, click your selection.
-              Once the ticker name has been set click
+              Once the ticker name has been set, click:
             </p>
-            <button className="btn btn-success center">
-              Let's Get Started!
-            </button>
+            <a href="/#">
+              <button className="btn btn-success center">
+                Let's Get Started!
+              </button>
+            </a>
             <br />
           </div>
           <div className="col-md-5" style={{ paddingTop: "10px" }}>
@@ -179,7 +182,7 @@ class Home extends Component {
           <div className="col-lg-4">
             <img
               className="rounded-circle"
-              src="https://i.giphy.com/media/JtBZm3Getg3dqxK0zP/giphy.webp"
+              src="https://media.giphy.com/media/JtBZm3Getg3dqxK0zP/giphy.gif"
               alt=""
               width="140"
               height="140"
@@ -222,9 +225,9 @@ class Home extends Component {
             />
             <h2>Analyze</h2>
             <p>
-              Generate a correlation/regression analysis for a range of time between your
-              selected ticker symbol and commodity returning you with a Pearson
-              Correlation and R-Squared values for your analysis.
+              Generate a correlation/regression analysis for a range of time
+              between your selected ticker symbol and commodity returning you
+              with a Pearson's Correlation and R² values for your analysis.
             </p>
           </div>
         </div>
@@ -250,8 +253,8 @@ class Home extends Component {
                   This application was intended as an educational tool for
                   programers that want to learn about how to manipulate API data
                   into datasets for building real world applications. It is also
-                  intended as a tool for data analyst or novel curious thinkers
-                  that want to dive into correlating analysis for stock market
+                  intended as a tool for data analysts and/or novel curious
+                  thinkers that want to dive into analysis of stock market
                   information.
                 </p>
               </div>
@@ -320,6 +323,7 @@ class Home extends Component {
           </div>
         </footer>
       </div>
+      </React.Fragment>
     );
   }
 }

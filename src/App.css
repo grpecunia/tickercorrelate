@@ -3,6 +3,10 @@
   padding-bottom: 100px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .no-gutters {
   padding-top: 45px;
 }
@@ -18,6 +22,8 @@ h1 {
 .nav {
   position: fixed;
   top: 0;
+  left:0;
+  right:0;
   width: -webkit-fill-available;
 }
 

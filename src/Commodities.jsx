@@ -226,6 +226,8 @@ class Commodities extends Component {
 
   sliceCorrDS = (arr, startDate, endDate) => {
     console.log('consoling myself....')
+    arr.slice(arr.findIndex(row => row.includes(startDate)), 
+              arr.findIndex(row => row.includes(endDate)))
   }
 
   render() {
@@ -242,8 +244,20 @@ class Commodities extends Component {
         <br />
         <br />
         <div className="container row">
+          <div className="col-lg-7 col-md-12 col-sm-12">
+            {this.props.everythingLoaded ? (
+              <MyChart
+                data={this.state.data}
+                everythingLoaded={this.state.everythingLoaded}
+                tickerData={this.props.tickerData}
+                {...this.props}
+              />
+            ) : (
+              <div className="loading">Loading Chart...</div>
+            )}
+          </div>
           <div
-            className="col-lg-3 offset-1 col-md-12 col-sm-12"
+            className="col-lg-4 offset-lg-1 col-md-12 col-sm-12"
             style={{ paddingBottom: "40px" }}
           >
             <div className="row-3 home">
@@ -270,7 +284,7 @@ class Commodities extends Component {
               size="xl"
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              height="75vh"
+              height="50%"
               show={this.state.show}
             >
               <Modal.Header>
@@ -395,18 +409,6 @@ class Commodities extends Component {
             >
               TickerCorrelate
             </button>
-          </div>
-          <div className="col-lg-7 offset-1 col-md-12 col-sm-12">
-            {this.props.everythingLoaded ? (
-              <MyChart
-                data={this.state.data}
-                everythingLoaded={this.state.everythingLoaded}
-                tickerData={this.props.tickerData}
-                {...this.props}
-              />
-            ) : (
-              <div className="loading">Loading Chart...</div>
-            )}
           </div>
         </div>
       </div>

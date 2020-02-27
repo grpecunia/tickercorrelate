@@ -3,8 +3,22 @@
   padding-bottom: 100px;
 }
 
+.no-gutters {
+  padding-top: 45px;
+}
+
+h1 {
+  padding-top: 40px;
+}
+
 .table {
   text-align: center;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: -webkit-fill-available;
 }
 
 .sidebar {
@@ -186,6 +200,30 @@ div.col-sm-12 {
 @media only screen and (min-width: 600px) {
   .row-8 {
     display: inline;
+  }
+
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 767px) {
+  h1.display-4 {
+    font-size: xx-large;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+  .offset-1 {
+    margin-left: 0;
+  }
+
+  .col-sm-12 {
+    padding-bottom: 10px;
+  }
+
+  .no-gutters {
+    padding-top: 55px;
+  }
+
+  .h1 {
+    padding-top: inherit;
   }
 }
 

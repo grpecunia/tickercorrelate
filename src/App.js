@@ -12,6 +12,7 @@ import Footer from './Footer'
 import Commodities from './Commodities'
 import APIs from './APIs'
 import Guide from './Guide'
+import CorrelationsJS from './CorrelationsJS'
 import "./App.css";
 
 
@@ -164,16 +165,21 @@ class App extends Component {
   }
 
   everythingLoaded = promises => {
-    Promise.all(promises).then(val => {
-      console.log("Everything has Loaded....", val);
-      let obj = { everythingLoaded: true };
+    Promise.all(promises)
+      .then(val => {
+        console.log("Everything has Loaded....", val);
+        let obj = { everythingLoaded: true };
 
-      val.forEach(v => {
-        console.log(Object.keys(v)[0], Object.values(v)[0]);
-        obj[Object.keys(v)[0]] = Object.values(v)[0];
+        val.forEach(v => {
+          console.log(Object.keys(v)[0], Object.values(v)[0]);
+          obj[Object.keys(v)[0]] = Object.values(v)[0];
+        });
+        this.setState(obj);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
       });
-      this.setState(obj);
-    });
   };
 
   showModal = () => {
@@ -238,6 +244,7 @@ class App extends Component {
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/Guide">Statistical Guide</Nav.Link>
+              <Nav.Link href="/CorrelationsJS">Correlations w/ JavaScript</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -336,6 +343,11 @@ class App extends Component {
             render={props => <APIs tickers={this.state.tickers} {...props} />}
           />
           <Route exact path="/Guide" render={props => <Guide {...props} />} />
+          <Route
+            exact
+            path="/CorrelationsJS"
+            render={props => <CorrelationsJS {...props} />}
+          />
         </Switch>
         <Footer />
       </div>

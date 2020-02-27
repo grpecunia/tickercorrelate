@@ -81,6 +81,7 @@ class Details extends Component {
   };
 
   pushToCommodity = e => {
+    this.props.pullToParent(this.state.historicalClosePrices);
     console.log(e.target.innerText, this.props);
     this.props.history.push(
       `/Commodities/${e.target.innerText}/${this.props.match.params.ticker}/`
@@ -210,7 +211,7 @@ class Details extends Component {
         <h5 className="home">
           <b>Select an Options for Commodity Correlations</b>
         </h5>
-        <div className="container row home">
+        <div className="row home">
           <div
             onClick={e => this.pushToCommodity(e)}
             className="col-lg-2 col-md-4 col-sm-12"

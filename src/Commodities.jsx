@@ -15,8 +15,9 @@ class Commodities extends Component {
       .then(res => {
         // console.log(res.data.historical);
         this.setState({
-          historicalClosePrices: res.data.historical
+          tickerData: res.data.historical
         });
+        this.props.pullToParent(res.data.historical);
         this.structureData(this.props.match.params.com, res.data.historical);
         console.log(res.data.historical);
       });
@@ -233,12 +234,11 @@ class Commodities extends Component {
     // console.log(this.props);
     return (
       <div className="container home">
-        <h1>Commodity Analysis </h1>
-        <h3>
-          Correlation between for {this.props.match.params.com}
+        <h1>
+          Correlation Analysis for {this.props.match.params.com}
           {" & "}
-          {this.props.match.params.ticker}
-        </h3>
+          {this.props.match.params.ticker}{" "}
+        </h1>
         <br />
         <br />
         <div className="container row">
@@ -270,7 +270,7 @@ class Commodities extends Component {
               size="xl"
               aria-labelledby="contained-modal-title-vcenter"
               centered
-              height="90%"
+              height="75vh"
               show={this.state.show}
             >
               <Modal.Header>
@@ -293,7 +293,7 @@ class Commodities extends Component {
               </Modal.Header>
               <Modal.Body>
                 <div className="row" style={{ paddingLeft: "20px" }}>
-                  <div className="col-4 offset-1">
+                  <div className="col-lg-4 col-sm-10 offset-1">
                     <h4 className="home">
                       {"r = "}
                       {this.state.r.toFixed(3)}
@@ -352,7 +352,7 @@ class Commodities extends Component {
                       </tbody>
                     </table>
                   </div>
-                  <div className="col-6">
+                  <div className="col-lg-6 col-sm-10 offset-1">
                     <Chart
                       width={"100%"}
                       height={"100%"}
@@ -398,7 +398,12 @@ class Commodities extends Component {
           </div>
           <div className="col-lg-7 offset-1 col-md-12 col-sm-12">
             {this.props.everythingLoaded ? (
-              <MyChart data={this.state.data} {...this.props} />
+              <MyChart
+                data={this.state.data}
+                everythingLoaded={this.state.everythingLoaded}
+                tickerData={this.props.tickerData}
+                {...this.props}
+              />
             ) : (
               <div className="loading">Loading Chart...</div>
             )}

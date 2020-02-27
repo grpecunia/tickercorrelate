@@ -5,7 +5,7 @@ class Footer extends Component {
     render() {
         return (
           <React.Fragment>
-            <div className="footer fixed-bottom">
+            <div className="footer footer-copyright text-center py-3 fixed-bottom">
               Developed by:{" "}
               <a
                 style={{ color: "white" }}

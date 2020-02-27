@@ -168,7 +168,7 @@ class App extends Component {
       console.log("Everything has Loaded....", val);
       let obj = { everythingLoaded: true };
 
-      val.map(v => {
+      val.forEach(v => {
         console.log(Object.keys(v)[0], Object.values(v)[0]);
         obj[Object.keys(v)[0]] = Object.values(v)[0];
       });
@@ -184,6 +184,12 @@ class App extends Component {
     this.setState({ show: false });
   };
 
+  pullToParent = (data) => {
+    this.setState({
+      tickerData : data
+    })
+  }
+
   render() {
     // console.log(this.state.goldData);
     return (
@@ -193,6 +199,7 @@ class App extends Component {
           expand="lg"
           variant="dark"
           style={{ backgroundColor: "#56728c", zIndex: "100" }}
+          className="nav"
         >
           <Navbar.Brand href="/">
             <img
@@ -208,18 +215,28 @@ class App extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <NavDropdown title="About" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="/APIs">API's</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item
+                  href="https://github.com/grpecunia/tickercorrelate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Github
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item
+                  href="https://riverapecunia.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GRP (Developer)
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
                 <NavDropdown.Item onClick={this.showModal}>
                   TickerCorrelate
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="https://riverapecunia.com">
-                  GRP (Developer)
-                </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="https://github.com/grpecunia/tickercorrelate">
-                Github
-              </Nav.Link>
-              <Nav.Link href="/APIs">API's</Nav.Link>
               <Nav.Link href="/Guide">Statistical Guide</Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -274,7 +291,13 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={props => <Home tickers={this.state.tickers} {...props} />}
+            render={props => (
+              <Home
+                tickers={this.state.tickers}
+                pullToParent={this.pullToParent}
+                {...props}
+              />
+            )}
           />
           <Route
             exact
@@ -283,6 +306,7 @@ class App extends Component {
               <Details
                 tickers={this.state.tickers}
                 tickerData={this.state.tickerData}
+                pullToParent={this.pullToParent}
                 {...props}
               />
             )}
@@ -300,6 +324,7 @@ class App extends Component {
                 coffeeData={this.state.coffeeData}
                 evooData={this.state.evooData}
                 everythingLoaded={this.state.everythingLoaded}
+                pullToParent={this.pullToParent}
                 // structureData={this.structureData()}
                 {...props}
               />

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import logo from "./logob.svg";
+import regressionline from "./regressionline.png"
 
 class Guide extends Component {
     render() {
         return (
-          <div className="container">
-            <h1 className="home" style={{ paddingBottom: "25px" }}>
+          <div className="container home">
+            <h1 style={{ paddingBottom: "25px" }}>
               <img
                 alt="TickerCorrelate"
                 src={logo}
@@ -16,7 +17,7 @@ class Guide extends Component {
               TickerCorrelate Guide
             </h1>
             <div className="row">
-              <div className="col-lg-5 offset-1">
+              <div className="col-lg-6">
                 <h3>Correlations</h3>
                 <p style={{ paddingBottom: "10px" }}>
                   Defined as the degree and type of relationship between any two
@@ -42,7 +43,7 @@ class Guide extends Component {
                 <br />
                 <br />
                 <h5>What is Pearson Coefficient? (r)</h5>
-                <p style={{ paddingTop: "10px" }}>
+                <p style={{ paddingTop: "15px" }}>
                   In statistics, the Pearson correlation coefficient, also
                   referred to as Pearson's r, the Pearson product-moment
                   correlation coefficient (PPMCC) or the bivariate correlation,
@@ -79,7 +80,7 @@ class Guide extends Component {
                 <br />
                 <br />
               </div>
-              <div className="col-lg-5 offset-1">
+              <div className="col-lg-6">
                 <h3>Regressions</h3>
                 <p style={{ paddingBottom: "10px" }}>
                   Defined as the statistical process estimating the relationship
@@ -92,16 +93,16 @@ class Guide extends Component {
                 <div className="row container">
                   <div className="col-lg-10 offset-1">
                     <img
-                      src="https://s3.amazonaws.com/guspecunia.com/assets/img/regression-line.jpg"
-                      alt="correlation"
-                      className="info"
+                      src={regressionline}
+                      alt="regression"
+                      className="info center home"
                     />
                   </div>
                 </div>
                 <br />
                 <br />
                 <h5>What is R-squared? (r²)</h5>
-                <p style={{ paddingTop: "10px" }}>
+                <p style={{ paddingTop: "15px" }}>
                   R-squared is a statistical measure of how close the data are
                   to the fitted regression line. It is also known as the
                   coefficient of determination, or the coefficient of multiple

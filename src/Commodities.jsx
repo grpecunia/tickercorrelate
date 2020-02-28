@@ -286,7 +286,7 @@ class Commodities extends Component {
 
   handleStartDateChange = e => {
     e.preventDefault();
-    if (this.availableDates.length)
+    // if (this.availableDates.length)
   };
 
   handleEndDateChange = e => {

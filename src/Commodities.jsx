@@ -62,10 +62,10 @@ class Commodities extends Component {
         console.log("Error... @ dataSet Switch");
         break;
     }
-    console.log("Passed the Switch.....", dataSet);
-    console.log(this.props);
-    console.log("Picking up my Ticker Prices >>", historicalClosePrices);
-    console.log("Picking up my Commodity DS>>> ", dataSet);
+    // console.log("Passed the Switch.....", dataSet);
+    // console.log(this.props);
+    // console.log("Picking up my Ticker Prices >>", historicalClosePrices);
+    // console.log("Picking up my Commodity DS>>> ", dataSet);
     let corrDS = [];
     let final = [
       [
@@ -92,7 +92,7 @@ class Commodities extends Component {
         dataSet.map(eachData => {
           if (eachData.includes(eachTick.date)) {
             // datePicker.push([eachTick.date]);
-            final.push([new Date(eachTick.date), eachTick.close, eachData[1]]);
+            final.push([new Date(eachTick.date + 'T00:00'), eachTick.close, eachData[1]]);
             corrDS.push([eachTick.date, eachTick.close, eachData[1]]);
           }
         });
@@ -120,18 +120,20 @@ class Commodities extends Component {
     });
     let startDate = availableDates[0];
     let endDate = availableDates[availableDates.length - 1];
+    
     this.setState({
       availableDates,
       startDate,
       endDate
     });
+    // this.showAvailableDates(availableDates);
   };
 
-  showAvailableDates = () => {
-    this.state.availableDates.map(date => {
-      return <options>{date}</options>;
-    });
-  };
+  // showAvailableDates = (arr) => {
+  //     arr.forEach(date => {
+  //     return <options>{date}</options>;
+  //   });
+  // };
 
   // Functionality to create the Correlation Coefficient dataSet needed to run the Pearson Correlation
   createCorrDataSet = arr => {
@@ -254,7 +256,7 @@ class Commodities extends Component {
     e.preventDefault();
     // console.log(e.target.name, e.target.value);
     if(e.target.value.match(/\d{4}(-\d{2}){2}/)) {
-      console.log(e.target.value);
+      // console.log(e.target.value);
       this.setState({
         startDate: e.target.value
       }, console.log(this.state.startDate));
@@ -266,26 +268,26 @@ class Commodities extends Component {
     // console.log(e.target.name, e.target.value);
 
     if(e.target.value.match(/\d{4}(-\d{2}){2}/)) {
-      console.log(e.target.value);
+      // console.log(e.target.value);
       this.setState({
         endDate: e.target.value
       });
     }
   };
 
-  handleStartDateSubmit = e => {
-    // console.log(e.target.name, e.target.value);
-    // this.setState({
-    //   startDate: e.target.value
-    // });
-  };
+  // handleStartDateSubmit = e => {
+  //   // console.log(e.target.name, e.target.value);
+  //   // this.setState({
+  //   //   startDate: e.target.value
+  //   // });
+  // };
 
-  handleEndDateSubmit = e => {
-    // console.log(e.target.name, e.target.value);
-    // this.setState({
-    //   endDate: e.target.value
-    // });
-  };
+  // handleEndDateSubmit = e => {
+  //   // console.log(e.target.name, e.target.value);
+  //   // this.setState({
+  //   //   endDate: e.target.value
+  //   // });
+  // };
 
   sliceCorrDS = () => {
     console.log(this.state.startDate, this.state.endDate)
@@ -346,10 +348,10 @@ class Commodities extends Component {
                 name="startDate"
                 // list="dates"
                 // required
-                onSubmit={e => this.handleStartDateSubmit(e)}
+                // onSubmit={e => this.handleStartDateSubmit(e)}
                 onChange={e => this.handleStartDateChange(e)}
               />
-              <datalist id="dates">{this.showAvailableDates}</datalist>
+              
             </div>
             <div className="row-3 home">
               <label>Correlation End Date</label>
@@ -360,7 +362,7 @@ class Commodities extends Component {
                 onBlur="(this.type='text')"
                 name="endDate"
                 required
-                onSubmit={e => this.handleEndDateSubmit(e)}
+                // onSubmit={e => this.handleEndDateSubmit(e)}
                 onChange={e => this.handleEndDateChange(e)}
                 // onSubmit={e => this.sliceCorrDS(e)}
               />

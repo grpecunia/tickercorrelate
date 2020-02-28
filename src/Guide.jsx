@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logo from "./logob.svg";
-import regressionline from "./regressionline.png"
 
 class Guide extends Component {
     render() {
@@ -93,7 +92,7 @@ class Guide extends Component {
                 <div className="row container">
                   <div className="col-lg-10 offset-1">
                     <img
-                      src={regressionline}
+                      src="https://s3.amazonaws.com/guspecunia.com/assets/img/regression-line.jpg"
                       alt="regression"
                       className="info center home"
                     />

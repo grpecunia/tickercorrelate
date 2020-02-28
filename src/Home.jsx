@@ -251,7 +251,7 @@ class Home extends Component {
                 </h5>
                 <p>
                   This application was intended as an educational tool for
-                  programers that want to learn about how to manipulate API data
+                  programmers that want to learn about how to manipulate API data
                   into datasets for building real world applications. It is also
                   intended as a tool for data analysts and/or novel curious
                   thinkers that want to dive into analysis of stock market

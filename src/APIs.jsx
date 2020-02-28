@@ -8,7 +8,7 @@ class APIs extends Component {
               Information about TickerCorrelate's API
             </h1>
             <div className="row contatiner">
-              <div className="col-lg-5 offset-1">
+              <div className="col-lg-6">
                 <h3>Financial Data API's</h3>
                 <p>
                   The financial data provided by this application is in part
@@ -36,7 +36,7 @@ class APIs extends Component {
                   </a>
                 </p>
               </div>
-              <div className="col-lg-5 offset-1">
+              <div className="col-lg-6">
                 <h3>Commodity API's</h3>
                 <p>
                   The Commodity data provided by this application is in part
@@ -48,8 +48,8 @@ class APIs extends Component {
                 <img
                   src="https://avatars2.githubusercontent.com/u/1659378?s=280&v=4"
                   alt="Quandl"
-                  height="200px"
-                  width="200px"
+                  height="175px"
+                  width="175px"
                 />
                 <br />
                 <br />

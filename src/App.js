@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import logob from "./logob.svg";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav, Modal, Button } from "react-bootstrap";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import axios from "axios";
 import { NavDropdown } from 'react-bootstrap';
 import Home from './Home'
@@ -243,8 +243,10 @@ class App extends Component {
                   TickerCorrelate
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/Guide">Statistical Guide</Nav.Link>
-              <Nav.Link href="/CorrelationsJS">
+              <Nav.Link as={Link} to="/Guide">
+                Statistical Guide
+              </Nav.Link>
+              <Nav.Link as={Link} to="/CorrelationsJS">
                 Correlations w/ JavaScript
               </Nav.Link>
             </Nav>

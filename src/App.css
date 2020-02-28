@@ -12,7 +12,7 @@ html {
 }
 
 h1 {
-  padding-top: 40px;
+  padding-top: 60px;
 }
 
 .table {
@@ -24,7 +24,10 @@ h1 {
   top: 0;
   left:0;
   right:0;
+  width: 100%;
+  width: -moz-available;
   width: -webkit-fill-available;
+  width: fill-available;
 }
 
 .sidebar {

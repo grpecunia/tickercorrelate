@@ -60,7 +60,6 @@ class Details extends Component {
         `https://financialmodelingprep.com/api/v3/company/profile/${this.props.match.params.ticker}`
       )
       .then(res => {
-        //This takes some time by the time it gets back
         this.setState({
           tickerData: res.data.profile
         });
@@ -72,9 +71,9 @@ class Details extends Component {
       })
   }
 
-  setGraphValues = () => {
-    console.log(this.state.commodityHistoricalPrices);
-  };
+  // setGraphValues = () => {
+  //   console.log(this.state.commodityHistoricalPrices);
+  // };
 
   numberWithCommas = x => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -82,21 +81,13 @@ class Details extends Component {
 
   pushToCommodity = e => {
     this.props.pullToParent(this.state.historicalClosePrices);
-    console.log(e.target.innerText, this.props);
+    // console.log(e.target.innerText, this.props);
     this.props.history.push(
       `/Commodities/${e.target.innerText}/${this.props.match.params.ticker}/`
     );
   };
 
   render() {
-    // console.log(this.state.historicalClosePrices);
-    console.log(this.props);
-    // console.log(this.state.commodityHistoricalPrices);
-    // console.log(this.state.historicalClosePrices);
-    // console.log(this.state.commodityHistoricalPrices);
-    // console.log('this state >>>',this.state)
-    // console.log("this props >>>", this.props);
-
     return (
       <div className="container">
         <div className="card mb-1" style={{ marginTop: "10px" }}>

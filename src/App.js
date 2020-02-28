@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import logob from "./logob.svg";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav, Modal, Button } from "react-bootstrap";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import { NavDropdown } from 'react-bootstrap';
 import Home from './Home'
@@ -61,7 +61,7 @@ class App extends Component {
       // This GET is to get the Gold Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let goldData = res.data.dataset_data.data;
@@ -78,7 +78,7 @@ class App extends Component {
       // This GET is to get the Copper Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let copperData = res.data.dataset_data.data;
@@ -95,7 +95,7 @@ class App extends Component {
       // This GET is to get the Crude Oil Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let crudeOilData = res.data.dataset_data.data;
@@ -112,7 +112,7 @@ class App extends Component {
       // This GET is to get the Cattle Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let cattleData = res.data.dataset_data.data;
@@ -129,7 +129,7 @@ class App extends Component {
       // This GET is to get the Arabica Coffee Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let coffeeData = res.data.dataset_data.data;
@@ -146,7 +146,7 @@ class App extends Component {
       // This GET is to get the Poultry Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=46YBY8Uy2_gZFR_EFD_F`
+          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let evooData = res.data.dataset_data.data;
@@ -243,21 +243,9 @@ class App extends Component {
                   TickerCorrelate
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link>
-                <Link
-                  to="/Guide"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  Statistical Guide
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  to="/CorrelationsJS"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  Correlations w/ JavaScript
-                </Link>
+              <Nav.Link href="/Guide">Statistical Guide</Nav.Link>
+              <Nav.Link href="/CorrelationsJS">
+                Correlations w/ JavaScript
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

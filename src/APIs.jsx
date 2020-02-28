@@ -18,7 +18,12 @@ class APIs extends Component {
                   close price on the previous end of week market close date
                   price.
                 </p>
-                <br />
+                <img
+                  src="https://media-exp1.licdn.com/dms/image/C560BAQGdsb1ki1epnA/company-logo_200_200/0?e=2159024400&v=beta&t=EUMpZvqwL7dGSq_tDmAA23A0CjLpWS3d-1VnWyo5AMM"
+                  alt="FMP"
+                  height="200px"
+                  width="200px"
+                />
                 <p>
                   For more information about Financial Modeling Prep visit their
                   website at:{" "}
@@ -39,6 +44,14 @@ class APIs extends Component {
                   documentation to help you start working with their open API's,
                   as well as support if you get stuck.
                 </p>
+                <br />
+                <img
+                  src="https://avatars2.githubusercontent.com/u/1659378?s=280&v=4"
+                  alt="Quandl"
+                  height="200px"
+                  width="200px"
+                />
+                <br />
                 <br />
                 <p>
                   For more information about Quandl and their APIs visit their

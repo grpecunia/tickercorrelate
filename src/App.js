@@ -221,7 +221,7 @@ class App extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <NavDropdown title="About" id="collasible-nav-dropdown">
-                <NavDropdown.Item path="/APIs">API's</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/APIs">API's</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   href="https://github.com/grpecunia/tickercorrelate"

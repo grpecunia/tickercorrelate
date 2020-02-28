@@ -91,8 +91,9 @@ class Commodities extends Component {
         // eslint-disable-next-line
         dataSet.map(eachData => {
           if (eachData.includes(eachTick.date)) {
+            // datePicker.push([eachTick.date]);
             final.push([new Date(eachTick.date), eachTick.close, eachData[1]]);
-            corrDS.push([new Date(eachTick.date), eachTick.close, eachData[1]]);
+            corrDS.push([eachTick.date, eachTick.close, eachData[1]]);
           }
         });
 
@@ -101,38 +102,66 @@ class Commodities extends Component {
         // return final;
       }
     );
+    console.log("[][][][]", corrDS);
     this.createCorrDataSet(corrDS);
     this.setScatterPlotData(corrDS);
-    console.log("Did we made this MFer to a DataSET??? >>>", final);
+    this.sliceAvailableDates(corrDS);
+    // console.log("Did we made this MFer to a DataSET??? >>>", final);
     this.setState({
       data: final,
       corrDS
     });
   };
 
+  sliceAvailableDates = arr => {
+    let availableDates = [];
+    arr.forEach(row => {
+      availableDates.push(row[0]);
+    });
+    let startDate = availableDates[0];
+    let endDate = availableDates[availableDates.length - 1];
+    this.setState({
+      availableDates,
+      startDate,
+      endDate
+    });
+  };
+
+  showAvailableDates = () => {
+    this.state.availableDates.map(date => {
+      return <options>{date}</options>;
+    });
+  };
+
   // Functionality to create the Correlation Coefficient dataSet needed to run the Pearson Correlation
   createCorrDataSet = arr => {
-    console.log("start generating corr DS>>> ", arr);
+    // console.log("start generating corr DS>>> ", arr);
     let ticketArr = [];
     let commoArr = [];
-    // let r, r2;
+    // let availableDates = [];
     arr.forEach(row => {
+      // availableDates.push(row[0]);
       ticketArr.push(row[1]);
       commoArr.push(row[2]);
     });
-    console.log(ticketArr, commoArr);
+    // let startDate = availableDates[0];
+    // let endDate = availableDates[availableDates.length - 1]
+    // console.log(ticketArr, commoArr);
     let r = this.getPearsonCorrelation(ticketArr, commoArr);
     let rSquared = r * r;
-    console.log(r, rSquared);
+    // console.log(r, rSquared);
     this.setState({
       r,
       rSquared
+      // availableDates,
+      // startDate,
+      // endDate,
     });
   };
 
   setScatterPlotData = arr => {
     let scatterArr = [
-      [`${this.props.match.params.ticker}`, `${this.props.match.params.ticker}`]
+      [`${this.props.match.params.ticker}`, `${this.props.match.params.com}`]
     ];
     arr.forEach(row => {
       scatterArr.push([row[1], row[2]]);
@@ -150,7 +179,9 @@ class Commodities extends Component {
     r: 0,
     rSquared: 0,
     dataSP: [],
-    corrDS : []
+    corrDS: [],
+    startDate: "1980-01-01",
+    endDate: "2019-12-31"
   };
 
   getPearsonCorrelation = (x, y) => {
@@ -198,40 +229,85 @@ class Commodities extends Component {
       sum_y2 += y2[i];
     }
 
-    var step1 = shortestArrayLength * sum_xy - sum_x * sum_y;
-    var step2 = shortestArrayLength * sum_x2 - sum_x * sum_x;
-    var step3 = shortestArrayLength * sum_y2 - sum_y * sum_y;
-    var step4 = Math.sqrt(step2 * step3);
-    var answer = step1 / step4;
+    let step1 = shortestArrayLength * sum_xy - sum_x * sum_y;
+    let step2 = shortestArrayLength * sum_x2 - sum_x * sum_x;
+    let step3 = shortestArrayLength * sum_y2 - sum_y * sum_y;
+    let step4 = Math.sqrt(step2 * step3);
+    let r = step1 / step4;
 
-    return answer;
+    return r;
   };
 
   // Functionality to Show the Correlation Results Modal
   showModal = () => {
-    this.setState({ show: true });
+
+    this.setState({
+      show: true
+    });
   };
   // Functionality to Hide the Correlation Results Modal
   hideModal = () => {
     this.setState({ show: false });
   };
 
-  handleStartDateChange = (e) => {
-    console.log(e.target.name ,  e.target.value);
+  handleStartDateChange = e => {
+    e.preventDefault();
+    // console.log(e.target.name, e.target.value);
+    if(e.target.value.match(/\d{4}(-\d{2}){2}/)) {
+      console.log(e.target.value);
+      this.setState({
+        startDate: e.target.value
+      }, console.log(this.state.startDate));
+    }
   };
 
-  handleEndDateChange = (e) => {
-    console.log(e.target.name, e.target.value);
+  handleEndDateChange = e => {
+    e.preventDefault()
+    // console.log(e.target.name, e.target.value);
+
+    if(e.target.value.match(/\d{4}(-\d{2}){2}/)) {
+      console.log(e.target.value);
+      this.setState({
+        endDate: e.target.value
+      });
+    }
   };
 
-  sliceCorrDS = (arr, startDate, endDate) => {
-    console.log('consoling myself....')
-    arr.slice(arr.findIndex(row => row.includes(startDate)), 
-              arr.findIndex(row => row.includes(endDate)))
-  }
+  handleStartDateSubmit = e => {
+    // console.log(e.target.name, e.target.value);
+    // this.setState({
+    //   startDate: e.target.value
+    // });
+  };
+
+  handleEndDateSubmit = e => {
+    // console.log(e.target.name, e.target.value);
+    // this.setState({
+    //   endDate: e.target.value
+    // });
+  };
+
+  sliceCorrDS = () => {
+    console.log(this.state.startDate, this.state.endDate)
+    let arr = this.state.corrDS;
+    console.log("slicing corrDS....", arr);
+    let corrDS = arr.slice(
+      arr.findIndex(row => row.includes(this.state.startDate)),
+      arr.findIndex(row => row.includes(this.state.endDate))
+    );
+    console.log(corrDS)
+    this.createCorrDataSet(corrDS);
+    this.setScatterPlotData(corrDS);
+    // if (corrDS.length !== this.state.corrDS.length) {
+    //   this.setState({
+    //     corrDS
+    //   });
+    // }
+    console.log('SCLICED PIZZA >>>> ', arr.length);
+  };
 
   render() {
-    console.log(this.state.data);
+    console.log(this.state.availableDates);
     // console.log(this.state.data);
     // console.log(this.props);
     return (
@@ -263,18 +339,28 @@ class Commodities extends Component {
             <div className="row-3 home">
               <label>Correlation Start Date</label>
               <input
-                type="date"
+                type="text"
+                placeholder={this.state.startDate}
+                onFocus="(this.type='date')"
+                // onBlur="(this.type='text')"
                 name="startDate"
-                required
+                // list="dates"
+                // required
+                onSubmit={e => this.handleStartDateSubmit(e)}
                 onChange={e => this.handleStartDateChange(e)}
-              ></input>
+              />
+              <datalist id="dates">{this.showAvailableDates}</datalist>
             </div>
             <div className="row-3 home">
               <label>Correlation End Date</label>
               <input
-                type="date"
+                type="text"
+                placeholder={this.state.endDate}
+                onFocus="(this.type='date')"
+                onBlur="(this.type='text')"
                 name="endDate"
                 required
+                onSubmit={e => this.handleEndDateSubmit(e)}
                 onChange={e => this.handleEndDateChange(e)}
                 // onSubmit={e => this.sliceCorrDS(e)}
               />
@@ -403,10 +489,14 @@ class Commodities extends Component {
             </Modal>
             <button
               type="submit"
-              onClick={this.showModal}
-              onSubmit={this.sliceCorrDS(this.state.corrDS)}
-              className="btn-outline-success"
+              onClick={this.sliceCorrDS}
+              className="btn-outline-warning"
             >
+              Cut the Scope
+            </button>
+            <br />
+            <br />
+            <button onClick={this.showModal} className="btn-outline-success">
               TickerCorrelate
             </button>
           </div>

@@ -144,6 +144,15 @@ class Home extends Component {
                 Let's Get Started!
               </button>
             </form>
+            <br />
+            <a href="/#howTo">
+              <img
+                src="https://cdn4.iconfinder.com/data/icons/basics-set-2/100/Question-512.png"
+                alt="Help"
+                height="50"
+                width="50"
+              />
+            </a>
           </div>
 
           <hr
@@ -154,8 +163,8 @@ class Home extends Component {
           <iframe
             src="https://docs.google.com/presentation/d/e/2PACX-1vR5wEMAmCn1bPhefMtGpsOu2pPA3wWAEIno4xVetivOlZLapgcSRaTO7PpY_MkBJYzSw1o2QtBHoG58/embed?start=false&loop=false&delayms=3000"
             frameborder="0"
-            width="960"
-            height="569"
+            width="100%"
+            height="400px"
             allowfullscreen="true"
             mozallowfullscreen="true"
             webkitallowfullscreen="true"
@@ -165,15 +174,21 @@ class Home extends Component {
           <hr
             className="featurette-divider"
             style={{ paddingBottom: "20px" }}
+            id="howTo"
           />
 
-          <div className="row featurette" style={{ paddingBottom: "20px" }}>
+          <div
+            className="row featurette"
+            style={{ paddingBottom: "20px" }}
+            id="howTo"
+          >
             <div className="col-md-7" style={{ paddingTop: "10px" }}>
+            <br/>
               <h2 className="featurette-heading">
                 How to use the{" "}
                 <span className="text-muted">TickerCorrelate App?</span>
               </h2>
-              <p className="lead" id="howTo">
+              <p className="lead">
                 Very simple! Search for the name or the ticker symbol of the
                 company, ETF, Mutual Fund or Bond in the provided search bar
                 above. Once you see your desired ticker, click your selection.

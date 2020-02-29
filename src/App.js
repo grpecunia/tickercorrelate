@@ -167,7 +167,7 @@ class App extends Component {
   everythingLoaded = promises => {
     Promise.all(promises)
       .then(val => {
-        console.log("Everything has Loaded....", val);
+        // console.log("Everything has Loaded....", val);
         let obj = { everythingLoaded: true };
 
         val.forEach(v => {
@@ -240,7 +240,7 @@ class App extends Component {
           style={{ backgroundColor: "#56728c", zIndex: "100" }}
           className="nav"
         >
-          <Navbar.Brand href="/">
+          <Navbar.Brand as={Link} to="/">
             <img
               alt="TickerCorrelate"
               src={logo}
@@ -381,7 +381,6 @@ class App extends Component {
                 evooData={this.state.evooData}
                 everythingLoaded={this.state.everythingLoaded}
                 pullToParent={this.pullToParent}
-                // structureData={this.structureData()}
                 {...props}
               />
             )}
@@ -389,7 +388,7 @@ class App extends Component {
           <Route
             exact
             path="/APIs"
-            render={props => <APIs tickers={this.state.tickers} {...props} />}
+            render={props => <APIs {...props} />}
           />
           <Route exact path="/Guide" render={props => <Guide {...props} />} />
           <Route

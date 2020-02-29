@@ -230,6 +230,10 @@ div.col-sm-12 {
   .row-8 {
     display: inline;
   }
+  
+  body {
+     padding: 0;
+  }
 
 }
 
@@ -253,6 +257,14 @@ div.col-sm-12 {
 
   .h1 {
     padding-top: inherit;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .nav {
+    width: 100%;
   }
 }
 

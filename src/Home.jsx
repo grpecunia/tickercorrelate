@@ -292,7 +292,8 @@ class Home extends Component {
                     data into datasets for building real world applications. It
                     is also intended as a tool for data analysts and/or novel
                     curious thinkers that want to dive into analysis of stock
-                    market information.
+                    market information. <br/><br/>
+                    For more information about the project, email us at: <a href='mailto:tickercorrelate@gmail.com'>tickercorrelate@gmail.com</a>
                   </p>
                 </div>
 

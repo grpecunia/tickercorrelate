@@ -125,7 +125,7 @@ input{
 }
 
 /* .icon:hover {
-    content: '🚀';
+    content: './logob.svg';
     position: absolute;
     right: 30px;
     top: 10px;
@@ -138,9 +138,9 @@ input {
   text-align: center;
 }
 
-.icon:hover::after {
+/* .icon:hover::after {
   transform: rotate(90deg);
-}
+} */
 
 input[type='date']::-webkit-datetime-edit-year-field:not([aria-valuenow]),
 input[type='date']::-webkit-datetime-edit-month-field:not([aria-valuenow]),

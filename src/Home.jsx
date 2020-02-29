@@ -96,7 +96,10 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="col-lg-10 col-md-10 col-sm-10 offset-1 home ease-in" id='top'>
+        <div
+          className="col-lg-10 col-md-10 col-sm-10 offset-1 home ease-in"
+          id="top"
+        >
           <div className="jumbotron">
             <h1 className="display-4">
               <img
@@ -125,24 +128,47 @@ class Home extends Component {
             style={{ paddingBottom: "100px" }}
           >
             <form className="mb-form">
-              <input
-                value={this.state.search}
-                type="text"
-                placeholder="Type the Company or ETF name..."
-                className="form-scontrol home"
-                onChange={this.filterStuff}
-              />
-              {this.showOptions()}
+              {this.props.tickers.length >= 1 ? (
+                <React.Fragment>
+                  <input
+                    value={this.state.search}
+                    type="text"
+                    placeholder="Type the Company or ETF name..."
+                    className="form-scontrol home"
+                    onChange={this.filterStuff}
+                  />
+                  {this.showOptions()}
 
-              <br />
-              <button
-                type="submit"
-                onClick={e => this.showDetails(e, this.state.search)}
-                className="btn btn-success center"
-                style={{ marginTop: "10px" }}
-              >
-                Let's Get Started!
-              </button>
+                  <br />
+
+                  <button
+                    type="submit"
+                    onClick={e => this.showDetails(e, this.state.search)}
+                    className="btn btn-success center"
+                    style={{ marginTop: "10px" }}
+                  >
+                    Let's Get Started!
+                  </button>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <p className="loading">
+                    <img
+                      alt="TickerCorrelate"
+                      src={logo}
+                      width="25"
+                      height="25"
+                      className="d-inline-block align-top loading"
+                    />{" "}
+                    Loading data...{" "}
+                  </p>
+                  <br />
+                  <img
+                    src="https://s3.us-east-1.amazonaws.com/guspecunia.com/assets/img/ezgif.com-resize.gif"
+                    alt="loading"
+                  />
+                </React.Fragment>
+              )}
             </form>
             <br />
             <a href="/#howTo">
@@ -162,10 +188,10 @@ class Home extends Component {
 
           <iframe
             src="https://docs.google.com/presentation/d/e/2PACX-1vR5wEMAmCn1bPhefMtGpsOu2pPA3wWAEIno4xVetivOlZLapgcSRaTO7PpY_MkBJYzSw1o2QtBHoG58/embed?start=false&loop=false&delayms=3000"
-            frameborder="0"
+            frameBorder="0"
             width="100%"
             height="400px"
-            allowfullscreen="true"
+            allowFullscreen="true"
             mozallowfullscreen="true"
             webkitallowfullscreen="true"
             title="TC Presentation"
@@ -183,7 +209,7 @@ class Home extends Component {
             id="howTo"
           >
             <div className="col-md-7" style={{ paddingTop: "10px" }}>
-            <br/>
+              <br />
               <h2 className="featurette-heading">
                 How to use the{" "}
                 <span className="text-muted">TickerCorrelate App?</span>
@@ -292,8 +318,12 @@ class Home extends Component {
                     data into datasets for building real world applications. It
                     is also intended as a tool for data analysts and/or novel
                     curious thinkers that want to dive into analysis of stock
-                    market information. <br/><br/>
-                    For more information about the project, email us at: <a href='mailto:tickercorrelate@gmail.com'>tickercorrelate@gmail.com</a>
+                    market information. <br />
+                    <br />
+                    For more information about the project, email us at:{" "}
+                    <a href="mailto:tickercorrelate@gmail.com">
+                      tickercorrelate@gmail.com
+                    </a>
                   </p>
                 </div>
 

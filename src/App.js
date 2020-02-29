@@ -172,7 +172,7 @@ class App extends Component {
         let obj = { everythingLoaded: true };
 
         val.forEach(v => {
-          console.log(Object.keys(v)[0], Object.values(v)[0]);
+          // console.log(Object.keys(v)[0], Object.values(v)[0]);
           obj[Object.keys(v)[0]] = Object.values(v)[0];
         });
         this.setState(obj);
@@ -318,6 +318,7 @@ class App extends Component {
               <Home
                 tickers={this.state.tickers}
                 pullToParent={this.pullToParent}
+                everythingLoaded={this.everythingLoaded}
                 {...props}
               />
             )}

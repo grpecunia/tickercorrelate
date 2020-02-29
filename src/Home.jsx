@@ -185,7 +185,8 @@ class Home extends Component {
             className="featurette-divider"
             style={{ paddingBottom: "20px" }}
           />
-
+          <h2> The TickerCorrelate Project </h2>
+          <br />
           <iframe
             src="https://docs.google.com/presentation/d/e/2PACX-1vR5wEMAmCn1bPhefMtGpsOu2pPA3wWAEIno4xVetivOlZLapgcSRaTO7PpY_MkBJYzSw1o2QtBHoG58/embed?start=false&loop=false&delayms=3000"
             frameBorder="0"
@@ -195,8 +196,10 @@ class Home extends Component {
             mozallowfullscreen="true"
             webkitallowfullscreen="true"
             title="TC Presentation"
+            style={{ paddingBottom: "20px" }}
           ></iframe>
-
+          <br />
+          <br />
           <hr
             className="featurette-divider"
             style={{ paddingBottom: "20px" }}
@@ -320,7 +323,7 @@ class Home extends Component {
                     curious thinkers that want to dive into analysis of stock
                     market information. <br />
                     <br />
-                    For more information about the project, email us at:{" "}
+                    For more information about the project email us at:{" "}
                     <a href="mailto:tickercorrelate@gmail.com">
                       tickercorrelate@gmail.com
                     </a>

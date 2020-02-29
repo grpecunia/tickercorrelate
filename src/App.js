@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+import logo from "./logo.svg";
 import logob from "./logob.svg";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav, Modal, Button } from "react-bootstrap";
 import { Route, Switch, Link } from "react-router-dom";
 import axios from "axios";
-import { NavDropdown } from 'react-bootstrap';
-import Home from './Home'
-import Details from './Details'
-import Footer from './Footer'
-import Commodities from './Commodities'
-import APIs from './APIs'
-import Guide from './Guide'
-import CorrelationsJS from './CorrelationsJS'
-import Roadmap from './Roadmap'
+import { NavDropdown } from "react-bootstrap";
+import Home from "./Home";
+import Details from "./Details";
+import Footer from "./Footer";
+import Commodities from "./Commodities";
+import APIs from "./APIs";
+import Guide from "./Guide";
+import CorrelationsJS from "./CorrelationsJS";
+import Roadmap from "./Roadmap";
 import "./App.css";
-
-
+import MetaTags from "react-meta-tags";
 
 class App extends Component {
   state = {
@@ -191,16 +190,49 @@ class App extends Component {
     this.setState({ show: false });
   };
 
-  pullToParent = (data) => {
+  pullToParent = data => {
     this.setState({
-      tickerData : data
-    })
-  }
+      tickerData: data
+    });
+  };
 
   render() {
     // console.log(this.state.goldData);
     return (
       <div className="App">
+        <MetaTags>
+          <title>TickerCorrelate App</title>
+          <meta
+            property="og:url"
+            content="https://tickercorrelate.com"
+          />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="TickerCorrelate" />
+          <meta
+            property="og:description"
+            content="Correlate Stock Market information with commodity prices"
+          />
+          <meta
+            property="og:image"
+            content="https://wallpaperaccess.com/full/1393719.jpg"
+          />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:site"
+            content="https://tickercorrelate.com"
+          />
+          <meta name="twitter:creator" content="Gustavo Rivera Pecunia" />
+          <meta name="twitter:title" content="TickerCorrelate" />
+          <meta
+            name="twitter:description"
+            content="Correlate Stock Market information with commodity prices"
+          />
+          <meta
+            name="twitter:image"
+            content="https://wallpaperaccess.com/full/1393719.jpg"
+          />
+        </MetaTags>
         <Navbar
           collapseOnSelect
           expand="lg"

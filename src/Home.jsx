@@ -17,13 +17,12 @@ class Home extends Component {
     console.log(this.props.tickers);
     let tickerOptions = { ...this.props.tickers };
     let tickerList = [];
-    for (let i in tickerOptions) {
+    tickerOptions.map(ticker => {
       tickerList.push({
-        value: tickerOptions[i].symbol,
-        label: tickerOptions[i].name
+        value: ticker.symbol,
+        label: ticker.name
       });
-    }
-    // console.log(tickerList);
+    })
     return tickerList.slice(0, 1000);
   };
 
@@ -33,9 +32,10 @@ class Home extends Component {
     let filteredItems = this.props.tickers.filter(symbol => {
       if (symbol.name) {
         return (
-          symbol.name.toLowerCase().includes(e.target.value) ||
-          symbol.symbol.toLowerCase().includes(e.target.value) ||
-          symbol.symbol.includes(e.target.value)
+          symbol.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          symbol.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          symbol.symbol.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          symbol.symbol.toLowerCase().includes(e.target.value.toLowerCase())
         );
       }
     });
@@ -127,7 +127,7 @@ class Home extends Component {
             className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-8 offset-sm-1"
             style={{ paddingBottom: "100px" }}
           >
-            <form className="mb-form">
+            <form className="mb-form" onChange={this.filterStuff}>
               {this.props.tickers.length >= 1 ? (
                 <React.Fragment>
                   <input
@@ -135,7 +135,6 @@ class Home extends Component {
                     type="text"
                     placeholder="Type the Company or ETF name..."
                     className="form-scontrol home"
-                    onChange={this.filterStuff}
                   />
                   {this.showOptions()}
 

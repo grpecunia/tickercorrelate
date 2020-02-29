@@ -101,16 +101,12 @@ h1 {
   padding: 30px;
 }
 
-li.tickerOptions {
-      list-style: none;
-      text-align: center;
-      padding-top: 5px;
-}
 
-li.tickerOptions :only-child{
-  background-color: #e9ecef;
+
+/* li.tickerOptions ::nth-child(1) {
+  background-color: red;
   margin: 2px;
-}
+} */
 
 input:focus {
   outline: none;
@@ -290,4 +286,16 @@ div.col-sm-12 {
 
 .info {
     width: inherit;
+}
+
+li.tickerOptions {
+  list-style: none;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px grey;
+  border-style: solid;
+  margin: 5px;
+  background: #e9ecef;
+  border-radius: 10px;
 }

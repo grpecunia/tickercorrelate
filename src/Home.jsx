@@ -8,23 +8,23 @@ class Home extends Component {
     options: [],
     selectedOptionTicker: null,
     filteredItems: [],
-    search: ""
+    search: "",
   };
 
   
 
-  showTickerOptions = () => {
-    console.log(this.props.tickers);
-    let tickerOptions = { ...this.props.tickers };
-    let tickerList = [];
-    tickerOptions.map(ticker => {
-      tickerList.push({
-        value: ticker.symbol,
-        label: ticker.name
-      });
-    })
-    return tickerList.slice(0, 1000);
-  };
+  // showTickerOptions = () => {
+  //   // console.log(this.props.tickers);
+  //   let tickerOptions = { ...this.props.tickers };
+  //   let tickerList = [];
+  //   tickerOptions.map(ticker => {
+  //     tickerList.push({
+  //       value: ticker.symbol,
+  //       label: ticker.name
+  //     });
+  //   })
+  //   return tickerList.slice(0, 1000);
+  // };
 
 
   filterStuff = e => {
@@ -65,12 +65,15 @@ class Home extends Component {
   };
 
   selectItem = item => {
-    console.log(item);
+    // console.log(item);
     this.setState({
       searchTicker: item.symbol,
       searchName: item.name
     });
     this.filterStuff({ target: { value: item.name } });
+    this.setState({
+      filteredItems : []
+    })
   };
 
   _showDetails = (e, i) => {
@@ -83,7 +86,7 @@ class Home extends Component {
     }
     else {
       e.preventDefault();
-      console.log("Nothing has been selected yet....");
+      // console.log("Nothing has been selected yet....");
     }
   };
   get showDetails() {

@@ -11,6 +11,7 @@ class Details extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     axios
       .get(
         `https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line`

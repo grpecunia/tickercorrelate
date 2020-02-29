@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from "./logo.svg";
+import { Link } from "react-router-dom";
 
 class Footer extends Component {
     render() {
@@ -16,10 +17,10 @@ class Footer extends Component {
                 GRP
               </a>{" "}
               |{" "}
-              <a style={{ color: "white" }} href="/">
-                <img alt="TickerCorrelate" src={logo} width="20" height="20" />{" "}
+              <Link style={{ color: "white" }} to="/">
+                <img alt='TickerCorrelate' Linklt="TickerCorrelLinkte" src={logo} width="20" height="20" />{" "}
                 TickerCorrelate
-              </a>{" "}
+              </Link>{" "}
               | All rights reserved © {new Date().getFullYear()}
             </div>
           </React.Fragment>

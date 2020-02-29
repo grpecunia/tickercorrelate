@@ -202,10 +202,7 @@ class App extends Component {
       <div className="App">
         <MetaTags>
           <title>TickerCorrelate App</title>
-          <meta
-            property="og:url"
-            content="https://tickercorrelate.com"
-          />
+          <meta property="og:url" content="https://tickercorrelate.com" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="TickerCorrelate" />
           <meta
@@ -218,10 +215,7 @@ class App extends Component {
           />
 
           <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            name="twitter:site"
-            content="https://tickercorrelate.com"
-          />
+          <meta name="twitter:site" content="https://tickercorrelate.com" />
           <meta name="twitter:creator" content="Gustavo Rivera Pecunia" />
           <meta name="twitter:title" content="TickerCorrelate" />
           <meta
@@ -311,18 +305,18 @@ class App extends Component {
               <b>About the TickerCorrelate Project</b>
             </h3>
             <p style={{ paddingLeft: "10%", paddingRight: "10%" }}>
-              This project was intended as an educational tool for programers
+              This project was intended as an educational tool for programmers
               that want to learn about how to manipulate API data into datasets
               for building real world applications. It is also intended as a
               tool for data analyst or novel curious thinkers that want to dive
               into correlating analysis for stock market information.
             </p>
-            <br />
-            <br />
-            For more information email us at:{" "}
-            <a href="mailto:tickercorrelate@gmail.com">
-              tickercorrelate@gmail.com
-            </a>
+            <p className='home'>
+              For more information email us at:{" "}
+              <a href="mailto:tickercorrelate@gmail.com">
+                tickercorrelate@gmail.com
+              </a>
+            </p>
             <hr />
             <h4 className="home" style={{ color: "red" }}>
               <b>Application Information Disclaimer</b>
@@ -385,11 +379,7 @@ class App extends Component {
               />
             )}
           />
-          <Route
-            exact
-            path="/APIs"
-            render={props => <APIs {...props} />}
-          />
+          <Route exact path="/APIs" render={props => <APIs {...props} />} />
           <Route exact path="/Guide" render={props => <Guide {...props} />} />
           <Route
             exact

@@ -489,13 +489,13 @@ class Commodities extends Component {
                 <Button onClick={this.hideModal}>Close</Button>
               </Modal.Footer>
             </Modal>
-            <button
+            {/* <button
               type="submit"
               onClick={this.sliceCorrDS}
               className="btn-outline-warning"
             >
               Cut the Scope
-            </button>
+            </button> */}
             <br />
             <br />
             <button onClick={this.showModal} className="btn-outline-success">

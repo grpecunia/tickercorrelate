@@ -96,7 +96,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="col-lg-10 col-md-10 col-sm-10 offset-1 home ease-in">
+        <div className="col-lg-10 col-md-10 col-sm-10 offset-1 home ease-in" id='top'>
           <div className="jumbotron">
             <h1 className="display-4">
               <img
@@ -194,7 +194,7 @@ class Home extends Component {
                 above. Once you see your desired ticker, click your selection.
                 Once the ticker name has been set, click:
               </p>
-              <a href="/#">
+              <a href="/#top">
                 <button className="btn btn-success center">
                   Let's Get Started!
                 </button>

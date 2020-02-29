@@ -13,6 +13,7 @@ import Commodities from './Commodities'
 import APIs from './APIs'
 import Guide from './Guide'
 import CorrelationsJS from './CorrelationsJS'
+import Roadmap from './Roadmap'
 import "./App.css";
 
 
@@ -221,7 +222,9 @@ class App extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <NavDropdown title="About" id="collasible-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/APIs">API's</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/APIs">
+                  API's
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   href="https://github.com/grpecunia/tickercorrelate"
@@ -248,6 +251,9 @@ class App extends Component {
               </Nav.Link>
               <Nav.Link as={Link} to="/CorrelationsJS">
                 Correlations w/ JavaScript
+              </Nav.Link>
+              <Nav.Link as={Link} to="/Roadmap">
+                Roadmap
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -279,6 +285,12 @@ class App extends Component {
               tool for data analyst or novel curious thinkers that want to dive
               into correlating analysis for stock market information.
             </p>
+            <br />
+            <br />
+            For more information email us at:{" "}
+            <a href="mailto:tickercorrelate@gmail.com">
+              tickercorrelate@gmail.com
+            </a>
             <hr />
             <h4 className="home" style={{ color: "red" }}>
               <b>Application Information Disclaimer</b>
@@ -351,6 +363,11 @@ class App extends Component {
             exact
             path="/CorrelationsJS"
             render={props => <CorrelationsJS {...props} />}
+          />
+          <Route
+            exact
+            path="/Roadmap"
+            render={props => <Roadmap {...props} />}
           />
         </Switch>
         <Footer />

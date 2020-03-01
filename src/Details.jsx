@@ -203,7 +203,7 @@ class Details extends Component {
         <h5 className="home">
           <b>Select an Options for Commodity Correlations</b>
         </h5>
-        <div className="row home">
+        <div className="row home" style={{paddingBottom: '50px'}}>
           <div
             onClick={e => this.pushToCommodity(e)}
             className="col-lg-2 col-md-4 col-sm-12"

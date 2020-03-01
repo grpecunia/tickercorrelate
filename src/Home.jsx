@@ -1,6 +1,7 @@
 /* eslint-disable array-callback-return */
 import React, { Component } from 'react';
 import logo from "./logob.svg";
+import logo2 from "./logo.svg"
 
 
 class Home extends Component {
@@ -206,16 +207,19 @@ class Home extends Component {
           <br />
           <hr
             className="featurette-divider"
-            style={{ paddingBottom: "20px" }}
+            style={{ paddingBottom: "40px" }}
             id="howTo"
           />
 
           <div
             className="row featurette"
-            style={{ paddingBottom: "20px" }}
+            style={{ paddingBottom: "50px" }}
             id="howTo"
           >
-            <div className="col-md-7" style={{ paddingTop: "10px" }}>
+            <div
+              className="col-md-7"
+              style={{ paddingTop: "40px", paddingBottom: "40px" }}
+            >
               <br />
               <h2 className="featurette-heading">
                 How to use the{" "}
@@ -234,7 +238,10 @@ class Home extends Component {
               </a>
               <br />
             </div>
-            <div className="col-md-5" style={{ paddingTop: "10px" }}>
+            <div
+              className="col-md-5"
+              style={{ paddingTop: "40px", paddingBottom: "40px" }}
+            >
               <img
                 className="featurette-image img-fluid mx-auto"
                 src="https://wallpaperaccess.com/full/1393719.jpg"
@@ -245,10 +252,13 @@ class Home extends Component {
 
           <hr
             className="featurette-divider"
-            style={{ paddingBottom: "20px" }}
+            style={{ paddingTop: "40px", paddingBottom: "40px" }}
           />
 
-          <div className="row">
+          <div
+            className="row"
+            style={{ paddingTop: "40px", paddingBottom: "60px" }}
+          >
             <div className="col-lg-4">
               <img
                 className="rounded-circle"
@@ -301,106 +311,123 @@ class Home extends Component {
               </p>
             </div>
           </div>
+        </div>
+        <footer
+          className="page-footer font-small blue pt-4"
+          style={{
+            backgroundColor: "#305373",
+            paddingTop: "40px",
+            paddingBottom: "40px",
+            color: "white",
+            textDecoration: "none"
+          }}
+        >
+          <div
+            className="container-fluid text-center text-md-left container"
+            style={{ paddingTop: "40px" }}
+          >
+            <div className="row" style={{ display: "align-space-evenly" }}>
+              <div className="col-md-6 mt-md-0 mt-3">
+                <h5>
+                  About the {"  "}
+                  <img
+                    alt="TickerCorrelate"
+                    src={logo2}
+                    width="25"
+                    height="25"
+                    className="d-inline-block align-top"
+                  />{" "}
+                  TickerCorrelate Application Project
+                </h5>
+                <p>
+                  This is an open source application intended as an educational tool for
+                  programmers that want to learn about how to manipulate API
+                  data into datasets for building real world applications. It is
+                  also intended as a tool for data analysts and/or novel curious
+                  thinkers that want to dive into analysis of stock market
+                  information. <br />
+                  <br />
+                  For more information about the project email us at:{" "}
+                  <a href="mailto:tickercorrelate@gmail.com">
+                    tickercorrelate@gmail.com
+                  </a>
+                </p>
+              </div>
 
-          <hr className="featurette-divider" />
+              <hr
+                className="clearfix w-100 d-md-none pb-3"
+                style={{ paddingLeft: "10px" }}
+              />
 
-          <footer className="page-footer font-small blue pt-4">
-            <div className="container-fluid text-center text-md-left">
-              <div className="row" style={{ display: "align-space-evenly" }}>
-                <div className="col-md-6 mt-md-0 mt-3">
-                  <h5>
-                    About the {"  "}
-                    <img
-                      alt="TickerCorrelate"
-                      src={logo}
-                      width="25"
-                      height="25"
-                      className="d-inline-block align-top"
-                    />{" "}
-                    TickerCorrelate Application
-                  </h5>
-                  <p>
-                    This application was intended as an educational tool for
-                    programmers that want to learn about how to manipulate API
-                    data into datasets for building real world applications. It
-                    is also intended as a tool for data analysts and/or novel
-                    curious thinkers that want to dive into analysis of stock
-                    market information. <br />
-                    <br />
-                    For more information about the project email us at:{" "}
-                    <a href="mailto:tickercorrelate@gmail.com">
-                      tickercorrelate@gmail.com
-                    </a>
-                  </p>
-                </div>
-
-                <hr
-                  className="clearfix w-100 d-md-none pb-3"
-                  style={{ paddingLeft: "10px" }}
-                />
-
-                <div className="col-md-3 mb-md-0 mb-3 home">
+              <div
+                className="col-md-3 mb-md-0 mb-3"
+                style={{ textAlign: "center" }}
+              >
+                <h5 className="text-uppercase">Proudly Originated from</h5>
+                <br />
+                <a
+                  href="https://www.ironhack.com/en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img
                     src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/4017/s300/logo-ironhack-blue.png"
                     alt="Ironhack"
                     width="120vw"
                     height="120vh"
                   />
-                  <br />
-                  <br />
-                </div>
+                </a>
+                <br />
+                <br />
+              </div>
 
-                <div className="col-md-3 mb-md-0 mb-3">
-                  <h5
-                    className="text-uppercase"
-                    style={{ textAlign: "center" }}
-                  >
-                    Documentation
-                  </h5>
+              <div className="col-md-3 mb-md-0 mb-3">
+                <h5 className="text-uppercase" style={{ textAlign: "center" }}>
+                  Documentation
+                </h5>
 
-                  <ul className="list-unstyled" style={{ textAlign: "center" }}>
-                    <li>
-                      <a
-                        href="https://financialmodelingprep.com/developer/docs/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Financial Modeling Prep
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://docs.quandl.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Quandl
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://react-google-charts.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        React Google Charts
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.npmjs.com/package/axios"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Axios
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                <ul className="list-unstyled" style={{ textAlign: "center" }}>
+                  <li>
+                    <a
+                      href="https://financialmodelingprep.com/developer/docs/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Financial Modeling Prep
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://docs.quandl.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Quandl
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://react-google-charts.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      React Google Charts
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.npmjs.com/package/axios"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Axios
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-          </footer>
-        </div>
+          </div>
+        </footer>
       </React.Fragment>
     );
   }

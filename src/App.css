@@ -1,6 +1,7 @@
 .App {
   font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
+  padding-top: 75px;
 }
 
 html {
@@ -25,7 +26,7 @@ body {
 }
 
 .no-gutters {
-  padding-top: 45px;
+  padding-top: 15px;
 }
 
 h1 {
@@ -259,7 +260,7 @@ div.col-sm-12 {
   }
 
   .no-gutters {
-    padding-top: 55px;
+    padding-top: 15px;
   }
 
   .h1 {
@@ -315,4 +316,12 @@ li.tickerOptions {
 li.tickerOptions:hover {
   background:#56728c;
   color: white;
+}
+
+footer>div>div>div.col-md-6.mt-md-0.mt-3>p>a  {
+  color: white
+}
+
+#root>div>footer>div>div>div:nth-child(4)>ul>li>a {
+  color: white
 }

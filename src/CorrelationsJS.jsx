@@ -11,7 +11,7 @@ class CorrelationsJS extends Component {
                   <h1>Correlating with JavaScript</h1>
                 </div>
               </div>
-              <div className="row container" style={{ paddingTop: "20px" }}>
+              <div className="row container">
                 <div className="col-lg-10 offset-lg-1 home">
                   <div className="row">
                     <div className="col-lg-6">

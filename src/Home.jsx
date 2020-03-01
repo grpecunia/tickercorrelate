@@ -363,7 +363,7 @@ class Home extends Component {
                 className="col-md-3 mb-md-0 mb-3"
                 style={{ textAlign: "center" }}
               >
-                <h5 className="text-uppercase">Proudly Originated from</h5>
+                <h5 className="text-uppercase">Proudly Originated at</h5>
                 <br />
                 <a
                   href="https://www.ironhack.com/en"

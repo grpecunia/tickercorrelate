@@ -337,7 +337,7 @@ class Commodities extends Component {
           </div>
           <div
             className="col-lg-4 offset-lg-1 col-md-12 col-sm-12"
-            style={{ paddingBottom: "40px" }}
+            style={{ paddingBottom: "70px" }}
           >
             <div className="row-3 home">
               <label>Correlation Start Date</label>

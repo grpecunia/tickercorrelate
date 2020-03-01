@@ -6,6 +6,7 @@ import Chart from "react-google-charts";
 
 
 class Commodities extends Component {
+
   componentDidMount() {
     // Axios GET for Ticker Historical Prices @ Market Close Info
     axios

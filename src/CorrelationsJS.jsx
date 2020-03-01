@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class CorrelationsJS extends Component {
+
     render() {
         return (
           <React.Fragment>

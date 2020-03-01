@@ -11,7 +11,9 @@ class Home extends Component {
     search: "",
   };
 
-  
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   // showTickerOptions = () => {
   //   // console.log(this.props.tickers);

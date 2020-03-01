@@ -31,6 +31,7 @@ class App extends Component {
   };
 
   async componentDidMount() {
+    window.scrollTo(0, 0);
     let promises = [];
     promises.push(
       // This GET is to get the 13k+ Ticker and Name List from the API // **** xssHys1jzi6-XeerUyrZ (gm) or 46YBY8Uy2_gZFR_EFD_F (pg)(apiKey) ****

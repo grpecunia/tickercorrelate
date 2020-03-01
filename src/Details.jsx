@@ -210,9 +210,6 @@ class Details extends Component {
           >
             <div
               className="row-8"
-              style={{
-                backgroundColor: "#6f89a1"
-              }}
             >
               Gold
             </div>
@@ -223,9 +220,6 @@ class Details extends Component {
           >
             <div
               className="row-8"
-              style={{
-                backgroundColor: "#6f89a1"
-              }}
             >
               Copper
             </div>
@@ -236,9 +230,6 @@ class Details extends Component {
           >
             <div
               className="row-8"
-              style={{
-                backgroundColor: "#6f89a1"
-              }}
             >
               Crude Oil
             </div>
@@ -249,9 +240,6 @@ class Details extends Component {
           >
             <div
               className="row-8"
-              style={{
-                backgroundColor: "#6f89a1"
-              }}
             >
               Cattle
             </div>
@@ -262,9 +250,6 @@ class Details extends Component {
           >
             <div
               className="row-8"
-              style={{
-                backgroundColor: "#6f89a1"
-              }}
             >
               Coffee
             </div>
@@ -275,9 +260,6 @@ class Details extends Component {
           >
             <div
               className="row-8"
-              style={{
-                backgroundColor: "#6f89a1"
-              }}
             >
               Olive Oil
             </div>

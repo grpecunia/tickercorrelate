@@ -126,7 +126,7 @@ class Home extends Component {
             </p>
             <hr className="my-4" />
             <p style={{ paddingLeft: "10%", paddingRight: "10%" }}>
-              A DataScience and Computer Programming Educational Tool
+              An OpenSource - DataScience & Computer Programming Educational Tool
             </p>
           </div>
           <div

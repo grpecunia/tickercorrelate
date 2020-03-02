@@ -5,7 +5,7 @@ class CorrelationsJS extends Component {
     render() {
         return (
           <React.Fragment>
-            <div className="container">
+            <div className="container" style={{ paddingBottom: "50px" }}>
               <div className="row home">
                 <div className="col-lg-10 offset-1">
                   <h1>Correlating with JavaScript</h1>
@@ -16,14 +16,17 @@ class CorrelationsJS extends Component {
                   <div className="row">
                     <div className="col-lg-6">
                       <p>
-                        While developing this application there was an intense search into various
-                        ways of determining the Pearson's coefficient with
-                        relation to the correlation analysis. Although many API tools are available to the public at large such as, BigML API, the desicion was made to look into the math and try
-                        to write a JavaScript function that would calculate the
-                        Pearson's Coefficient of Correlation (r) and Coefficient
-                        of determination (r²). In the spirit of openess and data
-                        sharing TickerCorreleate decided to publish the function to share and
-                        promote the use and improvement of it.
+                        While developing this application there was an intense
+                        search into various ways of determining the Pearson's
+                        coefficient with relation to the correlation analysis.
+                        Although many API tools are available to the public at
+                        large such as, BigML API, the desicion was made to look
+                        into the math and try to write a JavaScript function
+                        that would calculate the Pearson's Coefficient of
+                        Correlation (r) and Coefficient of determination (r²).
+                        In the spirit of openess and data sharing
+                        TickerCorreleate decided to publish the function to
+                        share and promote the use and improvement of it.
                       </p>
                     </div>
                     <div className="col-lg-6">

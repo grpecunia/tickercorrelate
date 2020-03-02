@@ -1,16 +1,3 @@
-.App {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  padding-bottom: 50px;
-  padding-top: 75px;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
-  /* height: 100vh;
-  width: 100vw; */ 
-}
 html,
 body {
   scroll-behavior: smooth;
@@ -22,6 +9,13 @@ body {
   padding: 0px;
   overflow-x: hidden;
 }
+
+.App {
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  padding-bottom: 50px;
+  padding-top: 75px;
+}
+
 
 .no-gutters {
   padding-top: 15px;
@@ -322,4 +316,8 @@ footer>div>div>div.col-md-6.mt-md-0.mt-3>p>a  {
 
 #root>div>footer>div>div>div:nth-child(4)>ul>li>a {
   color: white
+}
+
+.row.props {
+  justify-content: center;
 }

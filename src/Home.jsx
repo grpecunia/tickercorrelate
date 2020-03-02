@@ -255,11 +255,15 @@ class Home extends Component {
             style={{ paddingTop: "40px", paddingBottom: "40px" }}
           />
 
-          <div
-            className="row"
-            style={{ paddingTop: "40px", paddingBottom: "60px" }}
-          >
-            <div className="col-lg-4">
+          <div className="row props" style={{ paddingBottom: "60px" }}>
+            <div
+              className="col-lg-3"
+              style={{
+                paddingBottom: "40px",
+                paddingTop: "40px",
+                backgroundColor: "#e9ecef"
+              }}
+            >
               <img
                 className="rounded-circle"
                 src="https://media.giphy.com/media/JtBZm3Getg3dqxK0zP/giphy.gif"
@@ -267,14 +271,26 @@ class Home extends Component {
                 width="140"
                 height="140"
               />
+              <br />
+              <br />
               <h2>Market Data</h2>
+              <br />
               <p>
                 The application is backed by powerful API's with stock market
                 data and commodity trading from across the world. View
                 company/ticker information with access to download ready data.
               </p>
             </div>
-            <div className="col-lg-4">
+            <br />
+            <br />
+            <div
+              className="col-lg-3 offset-1"
+              style={{
+                paddingBottom: "40px",
+                paddingTop: "40px",
+                backgroundColor: "#e9ecef"
+              }}
+            >
               <img
                 className="rounded-circle"
                 src="https://media.giphy.com/media/ZMOQDnLAY2hOM/giphy.gif"
@@ -282,7 +298,10 @@ class Home extends Component {
                 width="140"
                 height="140"
               />
+              <br />
+              <br />
               <h2>Compare</h2>
+              <br />
               <img
                 src="https://image.flaticon.com/icons/svg/2506/2506011.svg"
                 alt="gold"
@@ -295,7 +314,16 @@ class Home extends Component {
                 Compare over 13,000+ ticker symbols with different commodities!
               </p>
             </div>
-            <div className="col-lg-4">
+            <br />
+            <br />
+            <div
+              className="col-lg-3 offset-1"
+              style={{
+                paddingBottom: "40px",
+                paddingTop: "40px",
+                backgroundColor: "#e9ecef"
+              }}
+            >
               <img
                 className="rounded-circle"
                 src="https://media.giphy.com/media/11Br38TUpXchNK/giphy.gif"
@@ -303,7 +331,10 @@ class Home extends Component {
                 width="140"
                 height="140"
               />
+              <br />
+              <br />
               <h2>Analyze</h2>
+              <br />
               <p>
                 Generate a correlation/regression analysis for a range of time
                 between your selected ticker symbol and commodity returning you
@@ -340,12 +371,12 @@ class Home extends Component {
                   TickerCorrelate Application Project
                 </h5>
                 <p>
-                  This is an open source application intended as an educational tool for
-                  programmers that want to learn about how to manipulate API
-                  data into datasets for building real world applications. It is
-                  also intended as a tool for data analysts and/or novel curious
-                  thinkers that want to dive into analysis of stock market
-                  information. <br />
+                  This is an open source application intended as an educational
+                  tool for programmers that want to learn about how to
+                  manipulate API data into datasets for building real world
+                  applications. It is also intended as a tool for data analysts
+                  and/or novel curious thinkers that want to dive into analysis
+                  of stock market information. <br />
                   <br />
                   For more information about the project email us at:{" "}
                   <a href="mailto:tickercorrelate@gmail.com">

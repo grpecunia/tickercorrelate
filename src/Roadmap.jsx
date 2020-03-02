@@ -5,7 +5,7 @@ import logo from "./logob.svg";
 class Roadmap extends Component {
     render() {
         return (
-          <div className="cointainer home">
+          <div className="cointainer home" style={{ paddingBottom: "50px" }}>
             <h1 style={{ paddingBottom: "25px" }}>
               <img
                 alt="TickerCorrelate"
@@ -16,7 +16,7 @@ class Roadmap extends Component {
               />{" "}
               TickerCorrelate Roadmap
             </h1>
-            <div className="row" style={{textAlign:'left'}}>
+            <div className="container row" style={{ textAlign: "left" }}>
               <div className="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
                 <h3>Where we are?</h3>
                 <p>

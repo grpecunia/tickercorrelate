@@ -314,7 +314,7 @@ class Commodities extends Component {
     // console.log(this.state.data);
     // console.log(this.props);
     return (
-      <div className="container home">
+      <div className="container home" style={{paddingBottom: '50px'}}>
         <h1>
           Correlation Analysis for {this.props.match.params.com}
           {" & "}

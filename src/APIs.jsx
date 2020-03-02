@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class APIs extends Component {
     render() {
         return (
-          <div className="container home">
+          <div className="container home" style={{ paddingBottom: "50px" }}>
             <h1 style={{ paddingBottom: "25px" }}>
               Information about TickerCorrelate's API
             </h1>

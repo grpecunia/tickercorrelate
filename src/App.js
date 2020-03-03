@@ -202,10 +202,13 @@ class App extends Component {
     return (
       <div className="App">
         <MetaTags>
-          <title>TickerCorrelate App</title>
+          <title>TickerCorrelate</title>
           <meta property="og:url" content="https://tickercorrelate.com" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="TickerCorrelate" />
+          <meta
+            property="og:title"
+            content="TickerCorrelate - Correlate Stock Market Data with Commodity Prices"
+          />
           <meta
             property="og:description"
             content="Correlate Stock Market information with commodity prices"
@@ -218,7 +221,10 @@ class App extends Component {
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="https://tickercorrelate.com" />
           <meta name="twitter:creator" content="Gustavo Rivera Pecunia" />
-          <meta name="twitter:title" content="TickerCorrelate" />
+          <meta
+            name="twitter:title"
+            content="TickerCorrelate - Correlate Stock Market Data with Commodity Prices"
+          />
           <meta
             name="twitter:description"
             content="Correlate Stock Market information with commodity prices"
@@ -312,7 +318,7 @@ class App extends Component {
               tool for data analyst or novel curious thinkers that want to dive
               into correlating analysis for stock market information.
             </p>
-            <p className='home'>
+            <p className="home">
               For more information email us at:{" "}
               <a href="mailto:tickercorrelate@gmail.com">
                 tickercorrelate@gmail.com

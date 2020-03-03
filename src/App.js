@@ -213,7 +213,7 @@ class App extends Component {
           />
           <meta
             property="og:description"
-            content="Correlate Stock Market information with commodity prices"
+            content="Correlate Stock Market Data with Commodity Prices"
           />
           <meta
             property="og:image"
@@ -225,11 +225,11 @@ class App extends Component {
           <meta name="twitter:creator" content="Gustavo Rivera Pecunia" />
           <meta
             name="twitter:title"
-            content="TickerCorrelate - Correlate Stock Market Data with Commodity Prices"
+            content="TickerCorrelate - Open Source Application Project"
           />
           <meta
             name="twitter:description"
-            content="Correlate Stock Market information with commodity prices"
+            content="Correlate Stock Market Data with Commodity Prices"
           />
           <meta
             name="twitter:image"

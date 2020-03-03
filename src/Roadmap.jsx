@@ -16,8 +16,8 @@ class Roadmap extends Component {
               />{" "}
               TickerCorrelate Roadmap
             </h1>
-            <div className="container row" style={{ textAlign: "left" }}>
-              <div className="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
+            <div className="row home">
+              <div className="col-lg-10 offset-lg-1 col-md-1 offset-md-1 col-sm-10 offset-sm-1">
                 <h3>Where we are?</h3>
                 <p>
                   We deployed the first version of TickerCorrelate in February

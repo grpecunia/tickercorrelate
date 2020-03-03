@@ -5,7 +5,7 @@ class CorrelationsJS extends Component {
     render() {
         return (
           <React.Fragment>
-            <div className="container" style={{ paddingBottom: "50px" }}>
+            <div className="container" style={{ paddingBottom: "70px" }}>
               <div className="row home">
                 <div className="col-lg-10 offset-1">
                   <h1>Correlating with JavaScript</h1>

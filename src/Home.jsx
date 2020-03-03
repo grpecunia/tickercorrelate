@@ -378,7 +378,7 @@ class Home extends Component {
                   and/or novel curious thinkers that want to dive into analysis
                   of stock market information. <br />
                   <br />
-                  For more information about the project or if you want to contribute email us at:{" "}
+                  For more information about the project or if you want to get involved and contribute email us at:{" "}
                   <a href="mailto:tickercorrelate@gmail.com">
                     tickercorrelate@gmail.com
                   </a>

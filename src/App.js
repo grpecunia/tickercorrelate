@@ -202,7 +202,9 @@ class App extends Component {
     return (
       <div className="App">
         <MetaTags>
-          <title>TickerCorrelate</title>
+          <title>
+            TickerCorrelate - Correlate Stock Market Data with Commodity Prices
+          </title>
           <meta property="og:url" content="https://tickercorrelate.com" />
           <meta property="og:type" content="website" />
           <meta

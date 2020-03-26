@@ -11,6 +11,7 @@
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "correlation-rank": "^0.2.0",
+    "cors": "^2.8.5",
     "ramda": "^0.27.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",

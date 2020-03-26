@@ -17,6 +17,7 @@ import Roadmap from "./Roadmap";
 import "./App.css";
 import MetaTags from "react-meta-tags";
 
+
 class App extends Component {
   state = {
     tickers: [],
@@ -62,7 +63,8 @@ class App extends Component {
       // This GET is to get the Gold Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let goldData = res.data.dataset_data.data;
@@ -79,7 +81,8 @@ class App extends Component {
       // This GET is to get the Copper Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let copperData = res.data.dataset_data.data;
@@ -96,7 +99,8 @@ class App extends Component {
       // This GET is to get the Crude Oil Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let crudeOilData = res.data.dataset_data.data;
@@ -113,7 +117,8 @@ class App extends Component {
       // This GET is to get the Cattle Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let cattleData = res.data.dataset_data.data;
@@ -130,7 +135,8 @@ class App extends Component {
       // This GET is to get the Arabica Coffee Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let coffeeData = res.data.dataset_data.data;
@@ -147,7 +153,8 @@ class App extends Component {
       // This GET is to get the Poultry Data from the API
       await axios
         .get(
-          `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then(res => {
           let evooData = res.data.dataset_data.data;

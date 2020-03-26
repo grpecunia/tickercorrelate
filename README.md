@@ -18,7 +18,7 @@ This project was intended as an educational tool for programmers that want to le
   
   ###  📊 TickerCorrelate Links - Connect 🚀
   <ul>
-<li><a href='https://github.com/grpecunia/tickercorrelate.wiki.git' target='_blank'>RoadMap</a></li>
+<li><a href='https://github.com/grpecunia/tickercorrelate/wiki/TickerCorrelate-Roadmap' target='_blank'>RoadMap</a></li>
 <li><a href='https://tickercorrelate.com/' target='_blank'>Live Application Link</li>
 <li><a href='https://tickercorrelate.netlify.com/CorrelationsJS' target='_blank'>Correlations with JavaScript</a></li>
 <li><a href='mailto:tickercorrelate@gmail.com' target='_blank'>Contact</a></li>

@@ -5,7 +5,11 @@
   
 </p>
 
+<<<<<<< HEAD
 ---
+=======
+*****
+>>>>>>> 72dc9aadba6e0213b8cc24f3b49fd59b5d4100a5
 
 ## About the TickerCorrelate Project
 This project was intended as an educational tool for programmers that want to learn about how to manipulate API data into datasets for building real world applications. It is also intended as a tool for data analyst or novel curious thinkers that want to dive into correlating analysis for stock market information.
@@ -18,6 +22,7 @@ This project was intended as an educational tool for programmers that want to le
   
   ###  📊 TickerCorrelate Links - Connect 🚀
   <ul>
+<<<<<<< HEAD
   <li><a href='https://tickercorrelate.com/' target='_blank'>Live Application</li>
   <li><a href='mailto:tickercorrelate@gmail.com' target='_blank'>Contact</a></li>
   </ul>
@@ -27,3 +32,19 @@ This project was intended as an educational tool for programmers that want to le
 <p align='center'> <a href='https://riverapecunia.com' target='_blank'>Developed by: Gustavo Rivera Pecunia</a> </p>
   
 
+=======
+<li><a href='https://github.com/grpecunia/tickercorrelate/wiki/TickerCorrelate-Roadmap' target='_blank'>RoadMap</a></li>
+<li><a href='https://tickercorrelate.com/' target='_blank'>Live Application Link</li>
+<li><a href='https://tickercorrelate.netlify.com/CorrelationsJS' target='_blank'>Correlations with JavaScript</a></li>
+<li><a href='mailto:tickercorrelate@gmail.com' target='_blank'>Contact</a></li>
+
+  
+  
+  </ul>
+  
+  ---
+  
+<p align='center'> <a href='https://riverapecunia.com' target='_blank'>Developed by: Gustavo Rivera Pecunia</a> </p>
+  
+
+>>>>>>> 72dc9aadba6e0213b8cc24f3b49fd59b5d4100a5

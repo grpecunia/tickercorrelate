@@ -14,62 +14,62 @@ class Details extends Component {
     window.scrollTo(0, 0);
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line`
+        `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line?apikey=6db0aec16ae503e78a48371a5bb9eb58`
       )
-      .then(res => {
+      .then((res) => {
         // console.log(res.data.historical);
         this.setState({
-          historicalClosePrices: res.data.historical
+          historicalClosePrices: res.data.historical,
         });
       });
 
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/company-key-metrics/${this.props.match.params.ticker}`
+        `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/company-key-metrics/${this.props.match.params.ticker}?apikey=6db0aec16ae503e78a48371a5bb9eb58`
       )
-      .then(res => {
+      .then((res) => {
         this.setState({
-          tickerMetrics: res.data.metrics[0]
+          tickerMetrics: res.data.metrics[0],
         });
         // console.log(this.state.tickerData)
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
-      })
+      });
 
 
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/company/rating/${this.props.match.params.ticker}`
+        `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/company/rating/${this.props.match.params.ticker}?apikey=6db0aec16ae503e78a48371a5bb9eb58`
       )
-      .then(res => {
+      .then((res) => {
         // console.log(res.data.rating);
 
         this.setState({
-          tickerRating: res.data.rating
+          tickerRating: res.data.rating,
         });
         // console.log(this.state.tickerData)
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
-      })
+      });
 
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/company/profile/${this.props.match.params.ticker}`
+        `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/company/profile/${this.props.match.params.ticker}?apikey=6db0aec16ae503e78a48371a5bb9eb58`
       )
-      .then(res => {
+      .then((res) => {
         this.setState({
-          tickerData: res.data.profile
+          tickerData: res.data.profile,
         });
         // console.log(this.state.tickerData)
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // handle error
         console.log(error);
-      })
+      });
   }
 
   // setGraphValues = () => {

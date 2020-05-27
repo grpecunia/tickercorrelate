@@ -11,12 +11,12 @@ class Commodities extends Component {
     // Axios GET for Ticker Historical Prices @ Market Close Info
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line`
+        `https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line?apikey=6db0aec16ae503e78a48371a5bb9eb58`
       )
-      .then(res => {
+      .then((res) => {
         // console.log(res.data.historical);
         this.setState({
-          tickerData: res.data.historical
+          tickerData: res.data.historical,
         });
         this.props.pullToParent(res.data.historical);
         this.structureData(this.props.match.params.com, res.data.historical);

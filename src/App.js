@@ -37,25 +37,29 @@ class App extends Component {
     promises.push(
       // This GET is to get the 13k+ Ticker and Name List from the API // **** xssHys1jzi6-XeerUyrZ (gm) or 46YBY8Uy2_gZFR_EFD_F (pg)(apiKey) ****
       axios
-        .get(`https://financialmodelingprep.com/api/v3/company/stock/list`)
-        .then(res => {
+        .get(
+          `https://financialmodelingprep.com/api/v3/company/stock/list?apikey=6db0aec16ae503e78a48371a5bb9eb58`
+        )
+        .then((res) => {
           //this.setState({
           return { tickers: res.data.symbolsList };
           //});
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         }),
 
       axios
-        .get(`https://financialmodelingprep.com/api/v3/majors-indexes`)
-        .then(res => {
+        .get(
+          `https://financialmodelingprep.com/api/v3/majors-indexes?apikey=6db0aec16ae503e78a48371a5bb9eb58`
+        )
+        .then((res) => {
           //this.setState({
           return { liveTickerInfo: res.data.majorIndexesList };
           //});
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         }),
@@ -66,14 +70,14 @@ class App extends Component {
           `https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
-        .then(res => {
+        .then((res) => {
           let goldData = res.data.dataset_data.data;
 
           //this.setState({
           return { goldData };
           //});
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         }),
@@ -84,14 +88,14 @@ class App extends Component {
           `https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
-        .then(res => {
+        .then((res) => {
           let copperData = res.data.dataset_data.data;
 
           //this.setState({
           return { copperData };
           //});
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         }),
@@ -102,14 +106,14 @@ class App extends Component {
           `https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
-        .then(res => {
+        .then((res) => {
           let crudeOilData = res.data.dataset_data.data;
 
           //this.setState({
           return { crudeOilData };
           //});
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         }),
@@ -120,14 +124,14 @@ class App extends Component {
           `https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
-        .then(res => {
+        .then((res) => {
           let cattleData = res.data.dataset_data.data;
 
           //this.setState({
           return { cattleData };
           //});
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         }),
@@ -138,14 +142,14 @@ class App extends Component {
           `https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
-        .then(res => {
+        .then((res) => {
           let coffeeData = res.data.dataset_data.data;
 
           //this.setState({
           return { coffeeData };
           // });
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         }),
@@ -156,14 +160,14 @@ class App extends Component {
           `https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
-        .then(res => {
+        .then((res) => {
           let evooData = res.data.dataset_data.data;
 
           //this.setState({
           return { evooData };
           //});
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // handle error
           console.log(error);
         })

@@ -38,7 +38,7 @@ class App extends Component {
       // This GET is to get the 13k+ Ticker and Name List from the API // **** xssHys1jzi6-XeerUyrZ (gm) or 46YBY8Uy2_gZFR_EFD_F (pg)(apiKey) ****
       axios
         .get(
-          `https://financialmodelingprep.com/api/v3/company/stock/list?apikey=6db0aec16ae503e78a48371a5bb9eb58`
+          `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/company/stock/list?apikey=6db0aec16ae503e78a48371a5bb9eb58`
         )
         .then((res) => {
           //this.setState({
@@ -52,7 +52,7 @@ class App extends Component {
 
       axios
         .get(
-          `https://financialmodelingprep.com/api/v3/majors-indexes?apikey=6db0aec16ae503e78a48371a5bb9eb58`
+          `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/majors-indexes?apikey=6db0aec16ae503e78a48371a5bb9eb58`
         )
         .then((res) => {
           //this.setState({
@@ -67,7 +67,7 @@ class App extends Component {
       // This GET is to get the Gold Data from the API
       await axios
         .get(
-          `https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://aqueous-wave-46255.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/WGC/GOLD_DAILY_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then((res) => {
@@ -85,7 +85,7 @@ class App extends Component {
       // This GET is to get the Copper Data from the API
       await axios
         .get(
-          `https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://aqueous-wave-46255.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOPP_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then((res) => {
@@ -103,7 +103,7 @@ class App extends Component {
       // This GET is to get the Crude Oil Data from the API
       await axios
         .get(
-          `https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://aqueous-wave-46255.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POILWTI_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then((res) => {
@@ -121,7 +121,7 @@ class App extends Component {
       // This GET is to get the Cattle Data from the API
       await axios
         .get(
-          `https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://aqueous-wave-46255.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PBEEF_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then((res) => {
@@ -139,7 +139,7 @@ class App extends Component {
       // This GET is to get the Arabica Coffee Data from the API
       await axios
         .get(
-          `https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://aqueous-wave-46255.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/PCOFFOTM_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then((res) => {
@@ -157,7 +157,7 @@ class App extends Component {
       // This GET is to get the Poultry Data from the API
       await axios
         .get(
-          `https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
+          `https://aqueous-wave-46255.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
           // `https://cors-anywhere.herokuapp.com/https://www.quandl.com/api/v3/datasets/ODA/POLVOIL_USD/data.json?api_key=xssHys1jzi6-XeerUyrZ`
         )
         .then((res) => {

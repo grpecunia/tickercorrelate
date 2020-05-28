@@ -7,9 +7,9 @@ import Chart from "react-google-charts";
 
 class Commodities extends Component {
 
-  componentDidMount() {
+  async componentDidMount() {
     // Axios GET for Ticker Historical Prices @ Market Close Info
-    axios
+    await axios
       .get(
         `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line?apikey=6db0aec16ae503e78a48371a5bb9eb58`
       )

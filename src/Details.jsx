@@ -14,7 +14,7 @@ class Details extends Component {
     window.scrollTo(0, 0);
     axios
       .get(
-        `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line?apikey=6db0aec16ae503e78a48371a5bb9eb58`
+        `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line&apikey=6db0aec16ae503e78a48371a5bb9eb58`
       )
       .then((res) => {
         // console.log(res.data.historical);

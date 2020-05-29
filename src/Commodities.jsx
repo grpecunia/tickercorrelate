@@ -7,21 +7,21 @@ import Chart from "react-google-charts";
 
 class Commodities extends Component {
 
-  async componentDidMount() {
+   componentDidMount() {
     // Axios GET for Ticker Historical Prices @ Market Close Info
-    await axios
-      .get(
-        `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line?apikey=6db0aec16ae503e78a48371a5bb9eb58`
-      )
-      .then((res) => {
-        // console.log(res.data.historical);
-        this.setState({
-          tickerData: res.data.historical,
-        });
-        this.props.pullToParent(res.data.historical);
-        this.structureData(this.props.match.params.com, res.data.historical);
-        console.log(res.data.historical);
-      });
+     axios
+       .get(
+         `https://aqueous-wave-46255.herokuapp.com/https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.match.params.ticker}?serietype=line&apikey=6db0aec16ae503e78a48371a5bb9eb58`
+       )
+       .then((res) => {
+         console.log("this is the res.data.stuff>>>>", res.data.historical);
+         this.setState({
+           tickerData: res.data.historical,
+         });
+         this.props.pullToParent(res.data.historical);
+         this.structureData(this.props.match.params.com, res.data.historical);
+         console.log(res.data.historical);
+       });
   }
 
   // Functionality that structures the dataSet needed to populate the ticker/commodity line graph
@@ -79,7 +79,7 @@ class Commodities extends Component {
       ]
     ];
 
-    historicalClosePrices.map(
+  historicalClosePrices.map(
       // eslint-disable-next-line
       eachTick => {
         // console.log(

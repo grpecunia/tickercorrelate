@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import logo from "./logob.svg";
 import logo2 from "./logo.svg"
+import quibble from "../src/quibble.png"
 
 
 class Home extends Component {
@@ -100,6 +101,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props.tickers)
     return (
       <React.Fragment>
         <div
@@ -126,7 +128,8 @@ class Home extends Component {
             </p>
             <hr className="my-4" />
             <p style={{ paddingLeft: "10%", paddingRight: "10%" }}>
-              An OpenSource - DataScience & Computer Programming Educational Tool
+              An OpenSource - DataScience & Computer Programming Educational
+              Tool
             </p>
           </div>
           <div
@@ -148,7 +151,7 @@ class Home extends Component {
 
                   <button
                     type="submit"
-                    onClick={e => this.showDetails(e, this.state.search)}
+                    onClick={(e) => this.showDetails(e, this.state.search)}
                     className="btn btn-success center"
                     style={{ marginTop: "10px" }}
                   >
@@ -261,7 +264,7 @@ class Home extends Component {
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#e9ecef"
+                backgroundColor: "#e9ecef",
               }}
             >
               <img
@@ -288,7 +291,7 @@ class Home extends Component {
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#e9ecef"
+                backgroundColor: "#e9ecef",
               }}
             >
               <img
@@ -321,7 +324,7 @@ class Home extends Component {
               style={{
                 paddingBottom: "40px",
                 paddingTop: "40px",
-                backgroundColor: "#e9ecef"
+                backgroundColor: "#e9ecef",
               }}
             >
               <img
@@ -350,7 +353,7 @@ class Home extends Component {
             paddingTop: "40px",
             paddingBottom: "40px",
             color: "white",
-            textDecoration: "none"
+            textDecoration: "none",
           }}
         >
           <div
@@ -378,7 +381,8 @@ class Home extends Component {
                   and/or novel curious thinkers that want to dive into analysis
                   of stock market information. <br />
                   <br />
-                  For more information about the project or if you want to get involved and contribute email us at:{" "}
+                  For more information about the project or if you want to get
+                  involved and contribute email us at:{" "}
                   <a href="mailto:tickercorrelate@gmail.com">
                     tickercorrelate@gmail.com
                   </a>
@@ -394,18 +398,17 @@ class Home extends Component {
                 className="col-md-3 mb-md-0 mb-3"
                 style={{ textAlign: "center" }}
               >
-                <h5 className="text-uppercase">Proudly Originated at</h5>
+                <h5 className="text-uppercase">Powered by</h5>
                 <br />
                 <a
-                  href="https://www.ironhack.com/en"
+                  href="https://quibblerm.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/4017/s300/logo-ironhack-blue.png"
-                    alt="Ironhack"
-                    width="120vw"
-                    height="120vh"
+                    src={quibble}
+                    alt="Quibble"
+                    width="200px"
                   />
                 </a>
                 <br />
